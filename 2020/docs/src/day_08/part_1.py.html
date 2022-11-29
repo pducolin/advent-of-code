@@ -1,0 +1,176 @@
+<html><body><h1>src/day_08/part_1.py</h1>Killed 33 out of 49 mutants<h2>Timeouts</h2>Mutants that made the test suite take a lot longer so the tests were killed.<h3>Mutant 1199</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -19,8 +19,7 @@
+ 
+     def run(self):
+         while (
+-            self.next_line_index not in self.executed_lines
+-            and self.next_line_index > -1
++            self.next_line_index not in self.executed_lines or self.next_line_index > -1
+             and self.next_line_index < len(self.lines)
+         ):
+             self.executed_lines.add(self.next_line_index)
+</pre><h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1179</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -1,6 +1,6 @@
+ from collections import namedtuple
+ 
+-Command = namedtuple('Command', ['operation', 'argument'])
++Command = namedtuple('XXCommandXX', ['operation', 'argument'])
+ 
+ 
+ class Program:
+</pre><h3>Mutant 1184</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -6,7 +6,7 @@
+ class Program:
+     def __init__(self, data):
+         self.lines = Program._parse_program(data)
+-        self.next_line_index = 0
++        self.next_line_index = 1
+         self.accumulator = 0
+         self.executed_lines = set()
+         self.steps = []
+</pre><h3>Mutant 1190</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -12,7 +12,7 @@
+         self.steps = []
+ 
+     def reset(self):
+-        self.next_line_index = 0
++        self.next_line_index = 1
+         self.accumulator = 0
+         self.executed_lines.clear()
+         self.steps.clear()
+</pre><h3>Mutant 1191</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -12,7 +12,7 @@
+         self.steps = []
+ 
+     def reset(self):
+-        self.next_line_index = 0
++        self.next_line_index = None
+         self.accumulator = 0
+         self.executed_lines.clear()
+         self.steps.clear()
+</pre><h3>Mutant 1192</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -13,7 +13,7 @@
+ 
+     def reset(self):
+         self.next_line_index = 0
+-        self.accumulator = 0
++        self.accumulator = 1
+         self.executed_lines.clear()
+         self.steps.clear()
+ 
+</pre><h3>Mutant 1193</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -13,7 +13,7 @@
+ 
+     def reset(self):
+         self.next_line_index = 0
+-        self.accumulator = 0
++        self.accumulator = None
+         self.executed_lines.clear()
+         self.steps.clear()
+ 
+</pre><h3>Mutant 1195</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -20,7 +20,7 @@
+     def run(self):
+         while (
+             self.next_line_index not in self.executed_lines
+-            and self.next_line_index > -1
++            and self.next_line_index >= -1
+             and self.next_line_index < len(self.lines)
+         ):
+             self.executed_lines.add(self.next_line_index)
+</pre><h3>Mutant 1197</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -20,7 +20,7 @@
+     def run(self):
+         while (
+             self.next_line_index not in self.executed_lines
+-            and self.next_line_index > -1
++            and self.next_line_index > -2
+             and self.next_line_index < len(self.lines)
+         ):
+             self.executed_lines.add(self.next_line_index)
+</pre><h3>Mutant 1198</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -21,7 +21,7 @@
+         while (
+             self.next_line_index not in self.executed_lines
+             and self.next_line_index > -1
+-            and self.next_line_index < len(self.lines)
++            and self.next_line_index <= len(self.lines)
+         ):
+             self.executed_lines.add(self.next_line_index)
+             self.execute_line()
+</pre><h3>Mutant 1209</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -34,7 +34,7 @@
+             value = int(current_line.argument)
+             self.accumulator += value
+             self.next_line_index += 1
+-            self.steps.append('Add {} to acc [{}], go to {}'.format(value, self.accumulator, self.next_line_index))
++            self.steps.append('XXAdd {} to acc [{}], go to {}XX'.format(value, self.accumulator, self.next_line_index))
+             return
+ 
+         if current_line.operation == 'jmp':
+</pre><h3>Mutant 1215</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -40,7 +40,7 @@
+         if current_line.operation == 'jmp':
+             value = int(current_line.argument)
+             self.next_line_index += value
+-            self.steps.append('Jump of {}, acc [{}], go to {}'.format(value, self.accumulator, self.next_line_index))
++            self.steps.append('XXJump of {}, acc [{}], go to {}XX'.format(value, self.accumulator, self.next_line_index))
+             return
+ 
+         if current_line.operation == 'nop':
+</pre><h3>Mutant 1218</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -44,7 +44,7 @@
+             return
+ 
+         if current_line.operation == 'nop':
+-            self.next_line_index += 1
++            self.next_line_index = 1
+             self.steps.append('Go to {}'.format(self.next_line_index))
+             return
+ 
+</pre><h3>Mutant 1220</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -44,7 +44,7 @@
+             return
+ 
+         if current_line.operation == 'nop':
+-            self.next_line_index += 1
++            self.next_line_index += 2
+             self.steps.append('Go to {}'.format(self.next_line_index))
+             return
+ 
+</pre><h3>Mutant 1221</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -45,7 +45,7 @@
+ 
+         if current_line.operation == 'nop':
+             self.next_line_index += 1
+-            self.steps.append('Go to {}'.format(self.next_line_index))
++            self.steps.append('XXGo to {}XX'.format(self.next_line_index))
+             return
+ 
+     @staticmethod
+</pre><h3>Mutant 1222</h3><pre>--- src/day_08/part_1.py
++++ src/day_08/part_1.py
+@@ -48,7 +48,6 @@
+             self.steps.append('Go to {}'.format(self.next_line_index))
+             return
+ 
+-    @staticmethod
+     def _parse_program(data):
+         lines = []
+         for line in data:
+</pre></body></html>

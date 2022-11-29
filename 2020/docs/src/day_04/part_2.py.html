@@ -1,0 +1,254 @@
+<html><body><h1>src/day_04/part_2.py</h1>Killed 59 out of 82 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 235</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' and int(val) > 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
+     )
+ 
+ 
+</pre><h3>Mutant 236</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' and int(val) >= 151 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
+     )
+ 
+ 
+</pre><h3>Mutant 237</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' and int(val) >= 150 and int(val) < 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
+     )
+ 
+ 
+</pre><h3>Mutant 238</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' and int(val) >= 150 and int(val) <= 194) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
+     )
+ 
+ 
+</pre><h3>Mutant 239</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' or int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
+     )
+ 
+ 
+</pre><h3>Mutant 242</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) > 59 and int(val) <= 76)
+     )
+ 
+ 
+</pre><h3>Mutant 243</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 60 and int(val) <= 76)
+     )
+ 
+ 
+</pre><h3>Mutant 244</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) < 76)
+     )
+ 
+ 
+</pre><h3>Mutant 245</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 77)
+     )
+ 
+ 
+</pre><h3>Mutant 246</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -5,7 +5,7 @@
+     unit = value[-2:]
+     val = value[:-2]
+     return val.isdigit() and (
+-        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
++        (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' or int(val) >= 59 and int(val) <= 76)
+     )
+ 
+ 
+</pre><h3>Mutant 248</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -4,7 +4,7 @@
+ def is_valid_height(value):
+     unit = value[-2:]
+     val = value[:-2]
+-    return val.isdigit() and (
++    return val.isdigit() or (
+         (unit == 'cm' and int(val) >= 150 and int(val) <= 193) or (unit == 'in' and int(val) >= 59 and int(val) <= 76)
+     )
+ 
+</pre><h3>Mutant 253</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -11,7 +11,7 @@
+ 
+ def is_valid_hcl(value):
+     pattern = r'#{1}[\da-f]{6}'
+-    return len(value) == 7 and re.search(pattern, value)
++    return len(value) == 7 or re.search(pattern, value)
+ 
+ 
+ def is_valid_ecl(value):
+</pre><h3>Mutant 255</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -15,7 +15,7 @@
+ 
+ 
+ def is_valid_ecl(value):
+-    return value in {'gry', 'amb', 'hzl', 'blu', 'brn', 'grn', 'oth'}
++    return value in {'XXgryXX', 'amb', 'hzl', 'blu', 'brn', 'grn', 'oth'}
+ 
+ 
+ def is_valid_pid(value):
+</pre><h3>Mutant 256</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -15,7 +15,7 @@
+ 
+ 
+ def is_valid_ecl(value):
+-    return value in {'gry', 'amb', 'hzl', 'blu', 'brn', 'grn', 'oth'}
++    return value in {'gry', 'XXambXX', 'hzl', 'blu', 'brn', 'grn', 'oth'}
+ 
+ 
+ def is_valid_pid(value):
+</pre><h3>Mutant 259</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -15,7 +15,7 @@
+ 
+ 
+ def is_valid_ecl(value):
+-    return value in {'gry', 'amb', 'hzl', 'blu', 'brn', 'grn', 'oth'}
++    return value in {'gry', 'amb', 'hzl', 'blu', 'XXbrnXX', 'grn', 'oth'}
+ 
+ 
+ def is_valid_pid(value):
+</pre><h3>Mutant 261</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -15,7 +15,7 @@
+ 
+ 
+ def is_valid_ecl(value):
+-    return value in {'gry', 'amb', 'hzl', 'blu', 'brn', 'grn', 'oth'}
++    return value in {'gry', 'amb', 'hzl', 'blu', 'brn', 'grn', 'XXothXX'}
+ 
+ 
+ def is_valid_pid(value):
+</pre><h3>Mutant 265</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -19,7 +19,7 @@
+ 
+ 
+ def is_valid_pid(value):
+-    return len(value) == 9 and re.search(r'\d{9}', value)
++    return len(value) == 9 or re.search(r'\d{9}', value)
+ 
+ 
+ def is_valid_byr(value):
+</pre><h3>Mutant 266</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -23,7 +23,7 @@
+ 
+ 
+ def is_valid_byr(value):
+-    return is_valid_year(value, 1920, 2002)
++    return is_valid_year(value, 1921, 2002)
+ 
+ 
+ def is_valid_iyr(value):
+</pre><h3>Mutant 267</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -23,7 +23,7 @@
+ 
+ 
+ def is_valid_byr(value):
+-    return is_valid_year(value, 1920, 2002)
++    return is_valid_year(value, 1920, 2003)
+ 
+ 
+ def is_valid_iyr(value):
+</pre><h3>Mutant 269</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -27,7 +27,7 @@
+ 
+ 
+ def is_valid_iyr(value):
+-    return is_valid_year(value, 2010, 2020)
++    return is_valid_year(value, 2010, 2021)
+ 
+ 
+ def is_valid_eyr(value):
+</pre><h3>Mutant 270</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -31,7 +31,7 @@
+ 
+ 
+ def is_valid_eyr(value):
+-    return is_valid_year(value, 2020, 2030)
++    return is_valid_year(value, 2021, 2030)
+ 
+ 
+ def is_valid_year(value, min, max):
+</pre><h3>Mutant 271</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -31,7 +31,7 @@
+ 
+ 
+ def is_valid_eyr(value):
+-    return is_valid_year(value, 2020, 2030)
++    return is_valid_year(value, 2020, 2031)
+ 
+ 
+ def is_valid_year(value, min, max):
+</pre><h3>Mutant 289</h3><pre>--- src/day_04/part_2.py
++++ src/day_04/part_2.py
+@@ -55,7 +55,7 @@
+ 
+ def is_valid_passport(passport):
+     if not is_valid_fields(passport):
+-        return False
++        return True
+ 
+     for key, val in passport.items():
+         if key in RULES and not RULES[key](val):
+</pre></body></html>

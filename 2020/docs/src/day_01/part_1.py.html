@@ -1,0 +1,12 @@
+<html><body><h1>src/day_01/part_1.py</h1>Killed 8 out of 9 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1073</h3><pre>--- src/day_01/part_1.py
++++ src/day_01/part_1.py
+@@ -3,7 +3,7 @@
+     complementars = set()
+     for input_line in data.split():
+         value = int(input_line)
+-        if value in complementars:
++        if value not in complementars:
+             result = value * (total - value)
+             return result
+         complementars.add(total - value)
+</pre></body></html>

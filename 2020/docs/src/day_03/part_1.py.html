@@ -1,0 +1,33 @@
+<html><body><h1>src/day_03/part_1.py</h1>Killed 27 out of 30 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 197</h3><pre>--- src/day_03/part_1.py
++++ src/day_03/part_1.py
+@@ -1,6 +1,6 @@
+ from collections import namedtuple
+ 
+-Point = namedtuple("Point", ["x", "y"])
++Point = namedtuple("XXPointXX", ["x", "y"])
+ 
+ 
+ def next_cell(map_length, current_point):
+</pre><h3>Mutant 206</h3><pre>--- src/day_03/part_1.py
++++ src/day_03/part_1.py
+@@ -5,7 +5,7 @@
+ 
+ def next_cell(map_length, current_point):
+     next_point = Point(current_point.x + 3, current_point.y + 1)
+-    if next_point.x >= map_length:
++    if next_point.x > map_length:
+         next_point = Point(next_point.x - map_length, next_point.y)
+     return next_point
+ 
+</pre><h3>Mutant 215</h3><pre>--- src/day_03/part_1.py
++++ src/day_03/part_1.py
+@@ -16,7 +16,7 @@
+ def solution(data):
+     trees_counter = 0
+     rows = [x for x in data.split('\n')]
+-    map_length = len(rows[0])
++    map_length = len(rows[1])
+     map_height = len(rows)
+     current_point = Point(0, 0)
+     while current_point.y < map_height:
+</pre></body></html>

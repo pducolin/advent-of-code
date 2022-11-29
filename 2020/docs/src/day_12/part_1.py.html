@@ -1,0 +1,220 @@
+<html><body><h1>src/day_12/part_1.py</h1>Killed 42 out of 62 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1627</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -1,6 +1,6 @@
+ from collections import namedtuple
+ 
+-DIRECTIONS = ['E', 'S', 'W', 'N']
++DIRECTIONS = ['E', 'S', 'XXWXX', 'N']
+ 
+ Position = namedtuple('Position', ['x', 'y', 'direction'])
+ Instruction = namedtuple('Instruction', ['direction', 'value'])
+</pre><h3>Mutant 1630</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -2,7 +2,7 @@
+ 
+ DIRECTIONS = ['E', 'S', 'W', 'N']
+ 
+-Position = namedtuple('Position', ['x', 'y', 'direction'])
++Position = namedtuple('XXPositionXX', ['x', 'y', 'direction'])
+ Instruction = namedtuple('Instruction', ['direction', 'value'])
+ 
+ 
+</pre><h3>Mutant 1635</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -3,7 +3,7 @@
+ DIRECTIONS = ['E', 'S', 'W', 'N']
+ 
+ Position = namedtuple('Position', ['x', 'y', 'direction'])
+-Instruction = namedtuple('Instruction', ['direction', 'value'])
++Instruction = namedtuple('XXInstructionXX', ['direction', 'value'])
+ 
+ 
+ def parse_instruction(instruction):
+</pre><h3>Mutant 1648</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -23,7 +23,7 @@
+ 
+ def move_direction(position, direction, value):
+     if direction == 'E':
+-        return Position(position.x + value, position.y, position.direction)
++        return Position(position.x - value, position.y, position.direction)
+     if direction == 'S':
+         return Position(position.x, position.y - value, position.direction)
+     if direction == 'W':
+</pre><h3>Mutant 1652</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -26,7 +26,7 @@
+         return Position(position.x + value, position.y, position.direction)
+     if direction == 'S':
+         return Position(position.x, position.y - value, position.direction)
+-    if direction == 'W':
++    if direction != 'W':
+         return Position(position.x - value, position.y, position.direction)
+     if direction == 'N':
+         return Position(position.x, position.y + value, position.direction)
+</pre><h3>Mutant 1653</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -26,7 +26,7 @@
+         return Position(position.x + value, position.y, position.direction)
+     if direction == 'S':
+         return Position(position.x, position.y - value, position.direction)
+-    if direction == 'W':
++    if direction == 'XXWXX':
+         return Position(position.x - value, position.y, position.direction)
+     if direction == 'N':
+         return Position(position.x, position.y + value, position.direction)
+</pre><h3>Mutant 1654</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -27,7 +27,7 @@
+     if direction == 'S':
+         return Position(position.x, position.y - value, position.direction)
+     if direction == 'W':
+-        return Position(position.x - value, position.y, position.direction)
++        return Position(position.x + value, position.y, position.direction)
+     if direction == 'N':
+         return Position(position.x, position.y + value, position.direction)
+ 
+</pre><h3>Mutant 1658</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -31,7 +31,7 @@
+     if direction == 'N':
+         return Position(position.x, position.y + value, position.direction)
+ 
+-    raise Exception('Bad direction {}'.format(direction))
++    raise Exception('XXBad direction {}XX'.format(direction))
+ 
+ 
+ def turn(position, direction, value):
+</pre><h3>Mutant 1660</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -35,7 +35,7 @@
+ 
+ 
+ def turn(position, direction, value):
+-    if direction == 'L':
++    if direction == 'XXLXX':
+         next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+</pre><h3>Mutant 1661</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -36,7 +36,7 @@
+ 
+ def turn(position, direction, value):
+     if direction == 'L':
+-        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
++        next_drection_index = (DIRECTIONS.index(position.direction) + value // 90 + 4) % 4
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+</pre><h3>Mutant 1662</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -36,7 +36,7 @@
+ 
+ def turn(position, direction, value):
+     if direction == 'L':
+-        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
++        next_drection_index = (DIRECTIONS.index(position.direction) - value / 90 + 4) % 4
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+</pre><h3>Mutant 1663</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -36,7 +36,7 @@
+ 
+ def turn(position, direction, value):
+     if direction == 'L':
+-        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
++        next_drection_index = (DIRECTIONS.index(position.direction) - value // 91 + 4) % 4
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+</pre><h3>Mutant 1664</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -36,7 +36,7 @@
+ 
+ def turn(position, direction, value):
+     if direction == 'L':
+-        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
++        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 - 4) % 4
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+</pre><h3>Mutant 1665</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -36,7 +36,7 @@
+ 
+ def turn(position, direction, value):
+     if direction == 'L':
+-        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
++        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 5) % 4
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+</pre><h3>Mutant 1666</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -36,7 +36,7 @@
+ 
+ def turn(position, direction, value):
+     if direction == 'L':
+-        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
++        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) / 4
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+</pre><h3>Mutant 1667</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -36,7 +36,7 @@
+ 
+ def turn(position, direction, value):
+     if direction == 'L':
+-        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
++        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 5
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+</pre><h3>Mutant 1668</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -36,7 +36,7 @@
+ 
+ def turn(position, direction, value):
+     if direction == 'L':
+-        next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
++        next_drection_index = None
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+</pre><h3>Mutant 1669</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -37,7 +37,7 @@
+ def turn(position, direction, value):
+     if direction == 'L':
+         next_drection_index = (DIRECTIONS.index(position.direction) - value // 90 + 4) % 4
+-        next_drection = DIRECTIONS[next_drection_index]
++        next_drection = None
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+         next_drection_index = (DIRECTIONS.index(position.direction) + value // 90) % 4
+</pre><h3>Mutant 1676</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -40,7 +40,7 @@
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+     if direction == 'R':
+-        next_drection_index = (DIRECTIONS.index(position.direction) + value // 90) % 4
++        next_drection_index = (DIRECTIONS.index(position.direction) + value // 90) % 5
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+ 
+</pre><h3>Mutant 1679</h3><pre>--- src/day_12/part_1.py
++++ src/day_12/part_1.py
+@@ -44,7 +44,7 @@
+         next_drection = DIRECTIONS[next_drection_index]
+         return Position(position.x, position.y, next_drection)
+ 
+-    raise Exception('Bad turn {}'.format(direction))
++    raise Exception('XXBad turn {}XX'.format(direction))
+ 
+ 
+ def manhattan_distance(position):
+</pre></body></html>

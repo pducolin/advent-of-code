@@ -1,0 +1,33 @@
+<html><body><h1>src/day_13/part_1.py</h1>Killed 18 out of 21 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1400</h3><pre>--- src/day_13/part_1.py
++++ src/day_13/part_1.py
+@@ -1,6 +1,6 @@
+ from collections import namedtuple
+ 
+-BusSchedule = namedtuple('BusSchedule', ['bus_id', 'wait_time'])
++BusSchedule = namedtuple('XXBusScheduleXX', ['bus_id', 'wait_time'])
+ 
+ 
+ def solution(data):
+</pre><h3>Mutant 1412</h3><pre>--- src/day_13/part_1.py
++++ src/day_13/part_1.py
+@@ -7,7 +7,7 @@
+     data = data.splitlines()
+     my_time = int(data[0])
+     bus_ids = [int(x) for x in data[1].split(',') if x != 'x']
+-    best_bus = None
++    best_bus = ""
+     for bus in bus_ids:
+         wait_time = bus - my_time % bus
+         if not best_bus or best_bus.wait_time > wait_time:
+</pre><h3>Mutant 1417</h3><pre>--- src/day_13/part_1.py
++++ src/day_13/part_1.py
+@@ -10,7 +10,7 @@
+     best_bus = None
+     for bus in bus_ids:
+         wait_time = bus - my_time % bus
+-        if not best_bus or best_bus.wait_time > wait_time:
++        if not best_bus or best_bus.wait_time >= wait_time:
+             best_bus = BusSchedule(bus, wait_time)
+     return best_bus.bus_id * best_bus.wait_time
+ 
+</pre></body></html>

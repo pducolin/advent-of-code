@@ -1,0 +1,111 @@
+<html><body><h1>src/day_09/part_2.py</h1>Killed 12 out of 22 mutants<h2>Timeouts</h2>Mutants that made the test suite take a lot longer so the tests were killed.<h3>Mutant 1238</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -12,7 +12,7 @@
+         if current_sum == sum_value:
+             return from_index, to_index
+         if current_sum > sum_value and from_index < to_index:
+-            from_index += 1
++            from_index = 1
+         else:
+             to_index += 1
+     return from_index, to_index
+</pre><h3>Mutant 1241</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -14,7 +14,7 @@
+         if current_sum > sum_value and from_index < to_index:
+             from_index += 1
+         else:
+-            to_index += 1
++            to_index = 1
+     return from_index, to_index
+ 
+ 
+</pre><h3>Mutant 1242</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -14,7 +14,7 @@
+         if current_sum > sum_value and from_index < to_index:
+             from_index += 1
+         else:
+-            to_index += 1
++            to_index -= 1
+     return from_index, to_index
+ 
+ 
+</pre><h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1228</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -5,7 +5,7 @@
+ 
+ 
+ def find_sum_range(sum_value, numbers):
+-    from_index = 0
++    from_index = 1
+     to_index = 1
+     while to_index < len(numbers):
+         current_sum = sum(numbers[from_index:to_index])
+</pre><h3>Mutant 1230</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -6,7 +6,7 @@
+ 
+ def find_sum_range(sum_value, numbers):
+     from_index = 0
+-    to_index = 1
++    to_index = 2
+     while to_index < len(numbers):
+         current_sum = sum(numbers[from_index:to_index])
+         if current_sum == sum_value:
+</pre><h3>Mutant 1232</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -7,7 +7,7 @@
+ def find_sum_range(sum_value, numbers):
+     from_index = 0
+     to_index = 1
+-    while to_index < len(numbers):
++    while to_index <= len(numbers):
+         current_sum = sum(numbers[from_index:to_index])
+         if current_sum == sum_value:
+             return from_index, to_index
+</pre><h3>Mutant 1235</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -11,7 +11,7 @@
+         current_sum = sum(numbers[from_index:to_index])
+         if current_sum == sum_value:
+             return from_index, to_index
+-        if current_sum > sum_value and from_index < to_index:
++        if current_sum >= sum_value and from_index < to_index:
+             from_index += 1
+         else:
+             to_index += 1
+</pre><h3>Mutant 1236</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -11,7 +11,7 @@
+         current_sum = sum(numbers[from_index:to_index])
+         if current_sum == sum_value:
+             return from_index, to_index
+-        if current_sum > sum_value and from_index < to_index:
++        if current_sum > sum_value and from_index <= to_index:
+             from_index += 1
+         else:
+             to_index += 1
+</pre><h3>Mutant 1240</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -12,7 +12,7 @@
+         if current_sum == sum_value:
+             return from_index, to_index
+         if current_sum > sum_value and from_index < to_index:
+-            from_index += 1
++            from_index += 2
+         else:
+             to_index += 1
+     return from_index, to_index
+</pre><h3>Mutant 1244</h3><pre>--- src/day_09/part_2.py
++++ src/day_09/part_2.py
+@@ -18,7 +18,7 @@
+     return from_index, to_index
+ 
+ 
+-def solution(data, lenght=25):
++def solution(data, lenght=26):
+     numbers = [int(x) for x in data.splitlines()]
+     for i in range(lenght, len(numbers)):
+         if not has_sum_in_previous_numbers(i, lenght, numbers):
+</pre></body></html>

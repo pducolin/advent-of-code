@@ -1,0 +1,133 @@
+<html><body><h1>src/tests/day_07/test_part_2.py</h1>Killed 10 out of 22 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 821</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -22,7 +22,7 @@
+ def test_parse_rules():
+     assert len(parse_rules(EXAMPLE_1)['shiny gold']) == len(
+         [
+-            {'color': 'dark olive', 'count': 1},
++            {'XXcolorXX': 'dark olive', 'count': 1},
+             {'color': 'vibrant plum', 'count': 2},
+         ]
+     )
+</pre><h3>Mutant 822</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -22,7 +22,7 @@
+ def test_parse_rules():
+     assert len(parse_rules(EXAMPLE_1)['shiny gold']) == len(
+         [
+-            {'color': 'dark olive', 'count': 1},
++            {'color': 'XXdark oliveXX', 'count': 1},
+             {'color': 'vibrant plum', 'count': 2},
+         ]
+     )
+</pre><h3>Mutant 823</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -22,7 +22,7 @@
+ def test_parse_rules():
+     assert len(parse_rules(EXAMPLE_1)['shiny gold']) == len(
+         [
+-            {'color': 'dark olive', 'count': 1},
++            {'color': 'dark olive', 'XXcountXX': 1},
+             {'color': 'vibrant plum', 'count': 2},
+         ]
+     )
+</pre><h3>Mutant 824</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -22,7 +22,7 @@
+ def test_parse_rules():
+     assert len(parse_rules(EXAMPLE_1)['shiny gold']) == len(
+         [
+-            {'color': 'dark olive', 'count': 1},
++            {'color': 'dark olive', 'count': 2},
+             {'color': 'vibrant plum', 'count': 2},
+         ]
+     )
+</pre><h3>Mutant 825</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -23,7 +23,7 @@
+     assert len(parse_rules(EXAMPLE_1)['shiny gold']) == len(
+         [
+             {'color': 'dark olive', 'count': 1},
+-            {'color': 'vibrant plum', 'count': 2},
++            {'XXcolorXX': 'vibrant plum', 'count': 2},
+         ]
+     )
+     assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'count': 2}])
+</pre><h3>Mutant 826</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -23,7 +23,7 @@
+     assert len(parse_rules(EXAMPLE_1)['shiny gold']) == len(
+         [
+             {'color': 'dark olive', 'count': 1},
+-            {'color': 'vibrant plum', 'count': 2},
++            {'color': 'XXvibrant plumXX', 'count': 2},
+         ]
+     )
+     assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'count': 2}])
+</pre><h3>Mutant 827</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -23,7 +23,7 @@
+     assert len(parse_rules(EXAMPLE_1)['shiny gold']) == len(
+         [
+             {'color': 'dark olive', 'count': 1},
+-            {'color': 'vibrant plum', 'count': 2},
++            {'color': 'vibrant plum', 'XXcountXX': 2},
+         ]
+     )
+     assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'count': 2}])
+</pre><h3>Mutant 828</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -23,7 +23,7 @@
+     assert len(parse_rules(EXAMPLE_1)['shiny gold']) == len(
+         [
+             {'color': 'dark olive', 'count': 1},
+-            {'color': 'vibrant plum', 'count': 2},
++            {'color': 'vibrant plum', 'count': 3},
+         ]
+     )
+     assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'count': 2}])
+</pre><h3>Mutant 831</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -26,7 +26,7 @@
+             {'color': 'vibrant plum', 'count': 2},
+         ]
+     )
+-    assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'count': 2}])
++    assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'XXcolorXX': 'dark red', 'count': 2}])
+ 
+ 
+ def test_solution_1():
+</pre><h3>Mutant 832</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -26,7 +26,7 @@
+             {'color': 'vibrant plum', 'count': 2},
+         ]
+     )
+-    assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'count': 2}])
++    assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'XXdark redXX', 'count': 2}])
+ 
+ 
+ def test_solution_1():
+</pre><h3>Mutant 833</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -26,7 +26,7 @@
+             {'color': 'vibrant plum', 'count': 2},
+         ]
+     )
+-    assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'count': 2}])
++    assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'XXcountXX': 2}])
+ 
+ 
+ def test_solution_1():
+</pre><h3>Mutant 834</h3><pre>--- src/tests/day_07/test_part_2.py
++++ src/tests/day_07/test_part_2.py
+@@ -26,7 +26,7 @@
+             {'color': 'vibrant plum', 'count': 2},
+         ]
+     )
+-    assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'count': 2}])
++    assert len(parse_rules(EXAMPLE_2)['shiny gold']) == len([{'color': 'dark red', 'count': 3}])
+ 
+ 
+ def test_solution_1():
+</pre></body></html>

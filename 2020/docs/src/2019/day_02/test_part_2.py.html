@@ -1,0 +1,587 @@
+<html><body><h1>src/2019/day_02/test_part_2.py</h1>Killed 0 out of 54 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 936</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -1,4 +1,4 @@
+-EXAMPLE = '1,9,10,3,2,3,11,0,99,30,40,50'
++EXAMPLE = 'XX1,9,10,3,2,3,11,0,99,30,40,50XX'
+ 
+ 
+ def parse_program(data):
+</pre><h3>Mutant 937</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -1,4 +1,4 @@
+-EXAMPLE = '1,9,10,3,2,3,11,0,99,30,40,50'
++EXAMPLE = None
+ 
+ 
+ def parse_program(data):
+</pre><h3>Mutant 938</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -2,7 +2,7 @@
+ 
+ 
+ def parse_program(data):
+-    return [int(x) for x in data.split(',')]
++    return [int(x) for x in data.split('XX,XX')]
+ 
+ 
+ def execute_program(instructions):
+</pre><h3>Mutant 939</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -6,7 +6,7 @@
+ 
+ 
+ def execute_program(instructions):
+-    instruction_pointer = 0
++    instruction_pointer = 1
+     while True:
+         operation = instructions[instruction_pointer]
+         if operation == 99:
+</pre><h3>Mutant 940</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -6,7 +6,7 @@
+ 
+ 
+ def execute_program(instructions):
+-    instruction_pointer = 0
++    instruction_pointer = None
+     while True:
+         operation = instructions[instruction_pointer]
+         if operation == 99:
+</pre><h3>Mutant 941</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -7,7 +7,7 @@
+ 
+ def execute_program(instructions):
+     instruction_pointer = 0
+-    while True:
++    while False:
+         operation = instructions[instruction_pointer]
+         if operation == 99:
+             break
+</pre><h3>Mutant 942</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -8,7 +8,7 @@
+ def execute_program(instructions):
+     instruction_pointer = 0
+     while True:
+-        operation = instructions[instruction_pointer]
++        operation = None
+         if operation == 99:
+             break
+ 
+</pre><h3>Mutant 943</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -9,7 +9,7 @@
+     instruction_pointer = 0
+     while True:
+         operation = instructions[instruction_pointer]
+-        if operation == 99:
++        if operation != 99:
+             break
+ 
+         if operation != 1 and operation != 2:
+</pre><h3>Mutant 944</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -9,7 +9,7 @@
+     instruction_pointer = 0
+     while True:
+         operation = instructions[instruction_pointer]
+-        if operation == 99:
++        if operation == 100:
+             break
+ 
+         if operation != 1 and operation != 2:
+</pre><h3>Mutant 945</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -10,7 +10,7 @@
+     while True:
+         operation = instructions[instruction_pointer]
+         if operation == 99:
+-            break
++            continue
+ 
+         if operation != 1 and operation != 2:
+             raise Exception('Invalid operation ({})'.format(operation))
+</pre><h3>Mutant 946</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -12,7 +12,7 @@
+         if operation == 99:
+             break
+ 
+-        if operation != 1 and operation != 2:
++        if operation == 1 and operation != 2:
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+</pre><h3>Mutant 947</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -12,7 +12,7 @@
+         if operation == 99:
+             break
+ 
+-        if operation != 1 and operation != 2:
++        if operation != 2 and operation != 2:
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+</pre><h3>Mutant 948</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -12,7 +12,7 @@
+         if operation == 99:
+             break
+ 
+-        if operation != 1 and operation != 2:
++        if operation != 1 and operation == 2:
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+</pre><h3>Mutant 949</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -12,7 +12,7 @@
+         if operation == 99:
+             break
+ 
+-        if operation != 1 and operation != 2:
++        if operation != 1 and operation != 3:
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+</pre><h3>Mutant 950</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -12,7 +12,7 @@
+         if operation == 99:
+             break
+ 
+-        if operation != 1 and operation != 2:
++        if operation != 1 or operation != 2:
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+</pre><h3>Mutant 951</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -13,7 +13,7 @@
+             break
+ 
+         if operation != 1 and operation != 2:
+-            raise Exception('Invalid operation ({})'.format(operation))
++            raise Exception('XXInvalid operation ({})XX'.format(operation))
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+         parameter_pointer_b = instructions[instruction_pointer + 2]
+</pre><h3>Mutant 952</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -15,7 +15,7 @@
+         if operation != 1 and operation != 2:
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+-        parameter_pointer_a = instructions[instruction_pointer + 1]
++        parameter_pointer_a = instructions[instruction_pointer - 1]
+         parameter_pointer_b = instructions[instruction_pointer + 2]
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+</pre><h3>Mutant 953</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -15,7 +15,7 @@
+         if operation != 1 and operation != 2:
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+-        parameter_pointer_a = instructions[instruction_pointer + 1]
++        parameter_pointer_a = instructions[instruction_pointer + 2]
+         parameter_pointer_b = instructions[instruction_pointer + 2]
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+</pre><h3>Mutant 954</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -15,7 +15,7 @@
+         if operation != 1 and operation != 2:
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+-        parameter_pointer_a = instructions[instruction_pointer + 1]
++        parameter_pointer_a = None
+         parameter_pointer_b = instructions[instruction_pointer + 2]
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+</pre><h3>Mutant 955</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -16,7 +16,7 @@
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+-        parameter_pointer_b = instructions[instruction_pointer + 2]
++        parameter_pointer_b = instructions[instruction_pointer - 2]
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+         target_pointer = instructions[instruction_pointer + 3]
+</pre><h3>Mutant 956</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -16,7 +16,7 @@
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+-        parameter_pointer_b = instructions[instruction_pointer + 2]
++        parameter_pointer_b = instructions[instruction_pointer + 3]
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+         target_pointer = instructions[instruction_pointer + 3]
+</pre><h3>Mutant 957</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -16,7 +16,7 @@
+             raise Exception('Invalid operation ({})'.format(operation))
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+-        parameter_pointer_b = instructions[instruction_pointer + 2]
++        parameter_pointer_b = None
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+         target_pointer = instructions[instruction_pointer + 3]
+</pre><h3>Mutant 958</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -17,7 +17,7 @@
+ 
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+         parameter_pointer_b = instructions[instruction_pointer + 2]
+-        parameter_a = instructions[parameter_pointer_a]
++        parameter_a = None
+         parameter_b = instructions[parameter_pointer_b]
+         target_pointer = instructions[instruction_pointer + 3]
+         if operation == 1:
+</pre><h3>Mutant 959</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -18,7 +18,7 @@
+         parameter_pointer_a = instructions[instruction_pointer + 1]
+         parameter_pointer_b = instructions[instruction_pointer + 2]
+         parameter_a = instructions[parameter_pointer_a]
+-        parameter_b = instructions[parameter_pointer_b]
++        parameter_b = None
+         target_pointer = instructions[instruction_pointer + 3]
+         if operation == 1:
+             instructions[target_pointer] = parameter_a + parameter_b
+</pre><h3>Mutant 960</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -19,7 +19,7 @@
+         parameter_pointer_b = instructions[instruction_pointer + 2]
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+-        target_pointer = instructions[instruction_pointer + 3]
++        target_pointer = instructions[instruction_pointer - 3]
+         if operation == 1:
+             instructions[target_pointer] = parameter_a + parameter_b
+         else:
+</pre><h3>Mutant 961</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -19,7 +19,7 @@
+         parameter_pointer_b = instructions[instruction_pointer + 2]
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+-        target_pointer = instructions[instruction_pointer + 3]
++        target_pointer = instructions[instruction_pointer + 4]
+         if operation == 1:
+             instructions[target_pointer] = parameter_a + parameter_b
+         else:
+</pre><h3>Mutant 962</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -19,7 +19,7 @@
+         parameter_pointer_b = instructions[instruction_pointer + 2]
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+-        target_pointer = instructions[instruction_pointer + 3]
++        target_pointer = None
+         if operation == 1:
+             instructions[target_pointer] = parameter_a + parameter_b
+         else:
+</pre><h3>Mutant 963</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -20,7 +20,7 @@
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+         target_pointer = instructions[instruction_pointer + 3]
+-        if operation == 1:
++        if operation != 1:
+             instructions[target_pointer] = parameter_a + parameter_b
+         else:
+             instructions[target_pointer] = parameter_a * parameter_b
+</pre><h3>Mutant 964</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -20,7 +20,7 @@
+         parameter_a = instructions[parameter_pointer_a]
+         parameter_b = instructions[parameter_pointer_b]
+         target_pointer = instructions[instruction_pointer + 3]
+-        if operation == 1:
++        if operation == 2:
+             instructions[target_pointer] = parameter_a + parameter_b
+         else:
+             instructions[target_pointer] = parameter_a * parameter_b
+</pre><h3>Mutant 965</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -21,7 +21,7 @@
+         parameter_b = instructions[parameter_pointer_b]
+         target_pointer = instructions[instruction_pointer + 3]
+         if operation == 1:
+-            instructions[target_pointer] = parameter_a + parameter_b
++            instructions[target_pointer] = parameter_a - parameter_b
+         else:
+             instructions[target_pointer] = parameter_a * parameter_b
+ 
+</pre><h3>Mutant 966</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -21,7 +21,7 @@
+         parameter_b = instructions[parameter_pointer_b]
+         target_pointer = instructions[instruction_pointer + 3]
+         if operation == 1:
+-            instructions[target_pointer] = parameter_a + parameter_b
++            instructions[target_pointer] = None
+         else:
+             instructions[target_pointer] = parameter_a * parameter_b
+ 
+</pre><h3>Mutant 967</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -23,7 +23,7 @@
+         if operation == 1:
+             instructions[target_pointer] = parameter_a + parameter_b
+         else:
+-            instructions[target_pointer] = parameter_a * parameter_b
++            instructions[target_pointer] = parameter_a / parameter_b
+ 
+         instruction_pointer += 4
+ 
+</pre><h3>Mutant 968</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -23,7 +23,7 @@
+         if operation == 1:
+             instructions[target_pointer] = parameter_a + parameter_b
+         else:
+-            instructions[target_pointer] = parameter_a * parameter_b
++            instructions[target_pointer] = None
+ 
+         instruction_pointer += 4
+ 
+</pre><h3>Mutant 969</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -25,7 +25,7 @@
+         else:
+             instructions[target_pointer] = parameter_a * parameter_b
+ 
+-        instruction_pointer += 4
++        instruction_pointer = 4
+ 
+ 
+ def solution(data):
+</pre><h3>Mutant 970</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -25,7 +25,7 @@
+         else:
+             instructions[target_pointer] = parameter_a * parameter_b
+ 
+-        instruction_pointer += 4
++        instruction_pointer -= 4
+ 
+ 
+ def solution(data):
+</pre><h3>Mutant 971</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -25,7 +25,7 @@
+         else:
+             instructions[target_pointer] = parameter_a * parameter_b
+ 
+-        instruction_pointer += 4
++        instruction_pointer += 5
+ 
+ 
+ def solution(data):
+</pre><h3>Mutant 972</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -29,7 +29,7 @@
+ 
+ 
+ def solution(data):
+-    original_instructions = parse_program(data)
++    original_instructions = None
+     for noun in range(0, 99):
+         for verb in range(0, 99):
+             instructions = original_instructions.copy()
+</pre><h3>Mutant 973</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -30,7 +30,7 @@
+ 
+ def solution(data):
+     original_instructions = parse_program(data)
+-    for noun in range(0, 99):
++    for noun in range(1, 99):
+         for verb in range(0, 99):
+             instructions = original_instructions.copy()
+             instructions[1] = noun
+</pre><h3>Mutant 974</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -30,7 +30,7 @@
+ 
+ def solution(data):
+     original_instructions = parse_program(data)
+-    for noun in range(0, 99):
++    for noun in range(0, 100):
+         for verb in range(0, 99):
+             instructions = original_instructions.copy()
+             instructions[1] = noun
+</pre><h3>Mutant 975</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -31,7 +31,7 @@
+ def solution(data):
+     original_instructions = parse_program(data)
+     for noun in range(0, 99):
+-        for verb in range(0, 99):
++        for verb in range(1, 99):
+             instructions = original_instructions.copy()
+             instructions[1] = noun
+             instructions[2] = verb
+</pre><h3>Mutant 976</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -31,7 +31,7 @@
+ def solution(data):
+     original_instructions = parse_program(data)
+     for noun in range(0, 99):
+-        for verb in range(0, 99):
++        for verb in range(0, 100):
+             instructions = original_instructions.copy()
+             instructions[1] = noun
+             instructions[2] = verb
+</pre><h3>Mutant 977</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -32,7 +32,7 @@
+     original_instructions = parse_program(data)
+     for noun in range(0, 99):
+         for verb in range(0, 99):
+-            instructions = original_instructions.copy()
++            instructions = None
+             instructions[1] = noun
+             instructions[2] = verb
+             try:
+</pre><h3>Mutant 978</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -33,7 +33,7 @@
+     for noun in range(0, 99):
+         for verb in range(0, 99):
+             instructions = original_instructions.copy()
+-            instructions[1] = noun
++            instructions[2] = noun
+             instructions[2] = verb
+             try:
+                 execute_program(instructions)
+</pre><h3>Mutant 979</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -33,7 +33,7 @@
+     for noun in range(0, 99):
+         for verb in range(0, 99):
+             instructions = original_instructions.copy()
+-            instructions[1] = noun
++            instructions[1] = None
+             instructions[2] = verb
+             try:
+                 execute_program(instructions)
+</pre><h3>Mutant 980</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -34,7 +34,7 @@
+         for verb in range(0, 99):
+             instructions = original_instructions.copy()
+             instructions[1] = noun
+-            instructions[2] = verb
++            instructions[3] = verb
+             try:
+                 execute_program(instructions)
+                 if instructions[0] == 19690720:
+</pre><h3>Mutant 981</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -34,7 +34,7 @@
+         for verb in range(0, 99):
+             instructions = original_instructions.copy()
+             instructions[1] = noun
+-            instructions[2] = verb
++            instructions[2] = None
+             try:
+                 execute_program(instructions)
+                 if instructions[0] == 19690720:
+</pre><h3>Mutant 982</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -36,7 +36,7 @@
+             instructions[1] = noun
+             instructions[2] = verb
+             try:
+-                execute_program(instructions)
++                execute_program(None)
+                 if instructions[0] == 19690720:
+                     return noun * 100 + verb
+             except Exception:
+</pre><h3>Mutant 983</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -37,7 +37,7 @@
+             instructions[2] = verb
+             try:
+                 execute_program(instructions)
+-                if instructions[0] == 19690720:
++                if instructions[1] == 19690720:
+                     return noun * 100 + verb
+             except Exception:
+                 continue
+</pre><h3>Mutant 984</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -37,7 +37,7 @@
+             instructions[2] = verb
+             try:
+                 execute_program(instructions)
+-                if instructions[0] == 19690720:
++                if instructions[0] != 19690720:
+                     return noun * 100 + verb
+             except Exception:
+                 continue
+</pre><h3>Mutant 985</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -37,7 +37,7 @@
+             instructions[2] = verb
+             try:
+                 execute_program(instructions)
+-                if instructions[0] == 19690720:
++                if instructions[0] == 19690721:
+                     return noun * 100 + verb
+             except Exception:
+                 continue
+</pre><h3>Mutant 986</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -38,7 +38,7 @@
+             try:
+                 execute_program(instructions)
+                 if instructions[0] == 19690720:
+-                    return noun * 100 + verb
++                    return noun / 100 + verb
+             except Exception:
+                 continue
+ 
+</pre><h3>Mutant 987</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -38,7 +38,7 @@
+             try:
+                 execute_program(instructions)
+                 if instructions[0] == 19690720:
+-                    return noun * 100 + verb
++                    return noun * 101 + verb
+             except Exception:
+                 continue
+ 
+</pre><h3>Mutant 988</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -38,7 +38,7 @@
+             try:
+                 execute_program(instructions)
+                 if instructions[0] == 19690720:
+-                    return noun * 100 + verb
++                    return noun * 100 - verb
+             except Exception:
+                 continue
+ 
+</pre><h3>Mutant 989</h3><pre>--- src/2019/day_02/test_part_2.py
++++ src/2019/day_02/test_part_2.py
+@@ -40,5 +40,5 @@
+                 if instructions[0] == 19690720:
+                     return noun * 100 + verb
+             except Exception:
+-                continue
++                break
+ 
+</pre></body></html>

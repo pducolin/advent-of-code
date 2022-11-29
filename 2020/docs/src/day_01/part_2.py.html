@@ -1,0 +1,100 @@
+<html><body><h1>src/day_01/part_2.py</h1>Killed 38 out of 47 mutants<h2>Timeouts</h2>Mutants that made the test suite take a lot longer so the tests were killed.<h3>Mutant 1062</h3><pre>--- src/day_01/part_2.py
++++ src/day_01/part_2.py
+@@ -33,7 +33,7 @@
+                 return a * b * c
+ 
+             if a + b + c < total:
+-                left_index += 1
++                left_index = 1
+                 continue
+ 
+             right_index -= 1
+</pre><h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1045</h3><pre>--- src/day_01/part_2.py
++++ src/day_01/part_2.py
+@@ -24,7 +24,7 @@
+     # O(N^2)
+     for i in range(len(sorted_numbers)):
+         a = sorted_numbers[i]
+-        left_index = i + 1
++        left_index = i - 1
+         right_index = len(sorted_numbers) - 1
+         while left_index < right_index:
+             b = sorted_numbers[left_index]
+</pre><h3>Mutant 1049</h3><pre>--- src/day_01/part_2.py
++++ src/day_01/part_2.py
+@@ -25,7 +25,7 @@
+     for i in range(len(sorted_numbers)):
+         a = sorted_numbers[i]
+         left_index = i + 1
+-        right_index = len(sorted_numbers) - 1
++        right_index = len(sorted_numbers) - 2
+         while left_index < right_index:
+             b = sorted_numbers[left_index]
+             c = sorted_numbers[right_index]
+</pre><h3>Mutant 1051</h3><pre>--- src/day_01/part_2.py
++++ src/day_01/part_2.py
+@@ -26,7 +26,7 @@
+         a = sorted_numbers[i]
+         left_index = i + 1
+         right_index = len(sorted_numbers) - 1
+-        while left_index < right_index:
++        while left_index <= right_index:
+             b = sorted_numbers[left_index]
+             c = sorted_numbers[right_index]
+             if a + b + c == total:
+</pre><h3>Mutant 1061</h3><pre>--- src/day_01/part_2.py
++++ src/day_01/part_2.py
+@@ -32,7 +32,7 @@
+             if a + b + c == total:
+                 return a * b * c
+ 
+-            if a + b + c < total:
++            if a + b + c <= total:
+                 left_index += 1
+                 continue
+ 
+</pre><h3>Mutant 1063</h3><pre>--- src/day_01/part_2.py
++++ src/day_01/part_2.py
+@@ -33,7 +33,7 @@
+                 return a * b * c
+ 
+             if a + b + c < total:
+-                left_index += 1
++                left_index -= 1
+                 continue
+ 
+             right_index -= 1
+</pre><h3>Mutant 1064</h3><pre>--- src/day_01/part_2.py
++++ src/day_01/part_2.py
+@@ -33,7 +33,7 @@
+                 return a * b * c
+ 
+             if a + b + c < total:
+-                left_index += 1
++                left_index += 2
+                 continue
+ 
+             right_index -= 1
+</pre><h3>Mutant 1065</h3><pre>--- src/day_01/part_2.py
++++ src/day_01/part_2.py
+@@ -34,7 +34,7 @@
+ 
+             if a + b + c < total:
+                 left_index += 1
+-                continue
++                break
+ 
+             right_index -= 1
+ 
+</pre><h3>Mutant 1068</h3><pre>--- src/day_01/part_2.py
++++ src/day_01/part_2.py
+@@ -36,7 +36,7 @@
+                 left_index += 1
+                 continue
+ 
+-            right_index -= 1
++            right_index -= 2
+ 
+ 
+ def solution(data):
+</pre></body></html>

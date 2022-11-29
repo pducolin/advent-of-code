@@ -1,0 +1,149 @@
+<html><body><h1>src/2019/day_02/test_part_1.py</h1>Killed 34 out of 48 mutants<h2>Timeouts</h2>Mutants that made the test suite take a lot longer so the tests were killed.<h3>Mutant 897</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -10,7 +10,7 @@
+     while True:
+         current_instruction = instructions[offset]
+         if current_instruction == 99:
+-            break
++            continue
+ 
+         if current_instruction != 1 and current_instruction != 2:
+             raise Exception('Invalid operation {}'.format(current_instruction))
+</pre><h3>Mutant 919</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -23,7 +23,7 @@
+         else:
+             instructions[target_index] = value_1 * value_2
+ 
+-        offset += 4
++        offset = 4
+ 
+ 
+ def solution(data):
+</pre><h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 888</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -1,4 +1,4 @@
+-EXAMPLE = '1,9,10,3,2,3,11,0,99,30,40,50'
++EXAMPLE = 'XX1,9,10,3,2,3,11,0,99,30,40,50XX'
+ 
+ 
+ def parse_program(data):
+</pre><h3>Mutant 889</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -1,4 +1,4 @@
+-EXAMPLE = '1,9,10,3,2,3,11,0,99,30,40,50'
++EXAMPLE = None
+ 
+ 
+ def parse_program(data):
+</pre><h3>Mutant 903</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -13,7 +13,7 @@
+             break
+ 
+         if current_instruction != 1 and current_instruction != 2:
+-            raise Exception('Invalid operation {}'.format(current_instruction))
++            raise Exception('XXInvalid operation {}XX'.format(current_instruction))
+ 
+         value_1 = instructions[instructions[offset + 1]]
+         value_2 = instructions[instructions[offset + 2]]
+</pre><h3>Mutant 922</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -27,7 +27,7 @@
+ 
+ 
+ def solution(data):
+-    instructions = parse_program(data)
++    instructions = None
+     instructions[1] = 12
+     instructions[2] = 2
+     execute_program(instructions)
+</pre><h3>Mutant 923</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -28,7 +28,7 @@
+ 
+ def solution(data):
+     instructions = parse_program(data)
+-    instructions[1] = 12
++    instructions[2] = 12
+     instructions[2] = 2
+     execute_program(instructions)
+     return instructions[0]
+</pre><h3>Mutant 924</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -28,7 +28,7 @@
+ 
+ def solution(data):
+     instructions = parse_program(data)
+-    instructions[1] = 12
++    instructions[1] = 13
+     instructions[2] = 2
+     execute_program(instructions)
+     return instructions[0]
+</pre><h3>Mutant 925</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -28,7 +28,7 @@
+ 
+ def solution(data):
+     instructions = parse_program(data)
+-    instructions[1] = 12
++    instructions[1] = None
+     instructions[2] = 2
+     execute_program(instructions)
+     return instructions[0]
+</pre><h3>Mutant 926</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -29,7 +29,7 @@
+ def solution(data):
+     instructions = parse_program(data)
+     instructions[1] = 12
+-    instructions[2] = 2
++    instructions[3] = 2
+     execute_program(instructions)
+     return instructions[0]
+ 
+</pre><h3>Mutant 927</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -29,7 +29,7 @@
+ def solution(data):
+     instructions = parse_program(data)
+     instructions[1] = 12
+-    instructions[2] = 2
++    instructions[2] = 3
+     execute_program(instructions)
+     return instructions[0]
+ 
+</pre><h3>Mutant 928</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -29,7 +29,7 @@
+ def solution(data):
+     instructions = parse_program(data)
+     instructions[1] = 12
+-    instructions[2] = 2
++    instructions[2] = None
+     execute_program(instructions)
+     return instructions[0]
+ 
+</pre><h3>Mutant 929</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -30,7 +30,7 @@
+     instructions = parse_program(data)
+     instructions[1] = 12
+     instructions[2] = 2
+-    execute_program(instructions)
++    execute_program(None)
+     return instructions[0]
+ 
+ 
+</pre><h3>Mutant 930</h3><pre>--- src/2019/day_02/test_part_1.py
++++ src/2019/day_02/test_part_1.py
+@@ -31,7 +31,7 @@
+     instructions[1] = 12
+     instructions[2] = 2
+     execute_program(instructions)
+-    return instructions[0]
++    return instructions[1]
+ 
+ 
+ def test_execute_program():
+</pre></body></html>

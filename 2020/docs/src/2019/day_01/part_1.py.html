@@ -1,0 +1,29 @@
+<html><body><h1>src/2019/day_01/part_1.py</h1>Killed 0 out of 4 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1012</h3><pre>--- src/2019/day_01/part_1.py
++++ src/2019/day_01/part_1.py
+@@ -1,3 +1,3 @@
+ def solution(data):
+-    return sum([int(x) // 3 - 2 for x in data.splitlines()])
++    return sum([int(x) / 3 - 2 for x in data.splitlines()])
+ 
+</pre><h3>Mutant 1013</h3><pre>--- src/2019/day_01/part_1.py
++++ src/2019/day_01/part_1.py
+@@ -1,3 +1,3 @@
+ def solution(data):
+-    return sum([int(x) // 3 - 2 for x in data.splitlines()])
++    return sum([int(x) // 4 - 2 for x in data.splitlines()])
+ 
+</pre><h3>Mutant 1014</h3><pre>--- src/2019/day_01/part_1.py
++++ src/2019/day_01/part_1.py
+@@ -1,3 +1,3 @@
+ def solution(data):
+-    return sum([int(x) // 3 - 2 for x in data.splitlines()])
++    return sum([int(x) // 3 + 2 for x in data.splitlines()])
+ 
+</pre><h3>Mutant 1015</h3><pre>--- src/2019/day_01/part_1.py
++++ src/2019/day_01/part_1.py
+@@ -1,3 +1,3 @@
+ def solution(data):
+-    return sum([int(x) // 3 - 2 for x in data.splitlines()])
++    return sum([int(x) // 3 - 3 for x in data.splitlines()])
+ 
+</pre></body></html>

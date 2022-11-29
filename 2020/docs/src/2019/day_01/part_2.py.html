@@ -1,0 +1,166 @@
+<html><body><h1>src/2019/day_01/part_2.py</h1>Killed 0 out of 16 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 996</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -1,5 +1,5 @@
+ def calculate_fuel(value):
+-    count = 0
++    count = 1
+     while True:
+         value = value // 3 - 2
+         if value < 0:
+</pre><h3>Mutant 997</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -1,5 +1,5 @@
+ def calculate_fuel(value):
+-    count = 0
++    count = None
+     while True:
+         value = value // 3 - 2
+         if value < 0:
+</pre><h3>Mutant 998</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -1,6 +1,6 @@
+ def calculate_fuel(value):
+     count = 0
+-    while True:
++    while False:
+         value = value // 3 - 2
+         if value < 0:
+             break
+</pre><h3>Mutant 999</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -1,7 +1,7 @@
+ def calculate_fuel(value):
+     count = 0
+     while True:
+-        value = value // 3 - 2
++        value = value / 3 - 2
+         if value < 0:
+             break
+         count += value
+</pre><h3>Mutant 1000</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -1,7 +1,7 @@
+ def calculate_fuel(value):
+     count = 0
+     while True:
+-        value = value // 3 - 2
++        value = value // 4 - 2
+         if value < 0:
+             break
+         count += value
+</pre><h3>Mutant 1001</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -1,7 +1,7 @@
+ def calculate_fuel(value):
+     count = 0
+     while True:
+-        value = value // 3 - 2
++        value = value // 3 + 2
+         if value < 0:
+             break
+         count += value
+</pre><h3>Mutant 1002</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -1,7 +1,7 @@
+ def calculate_fuel(value):
+     count = 0
+     while True:
+-        value = value // 3 - 2
++        value = value // 3 - 3
+         if value < 0:
+             break
+         count += value
+</pre><h3>Mutant 1003</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -1,7 +1,7 @@
+ def calculate_fuel(value):
+     count = 0
+     while True:
+-        value = value // 3 - 2
++        value = None
+         if value < 0:
+             break
+         count += value
+</pre><h3>Mutant 1004</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -2,7 +2,7 @@
+     count = 0
+     while True:
+         value = value // 3 - 2
+-        if value < 0:
++        if value <= 0:
+             break
+         count += value
+     return count
+</pre><h3>Mutant 1005</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -2,7 +2,7 @@
+     count = 0
+     while True:
+         value = value // 3 - 2
+-        if value < 0:
++        if value < 1:
+             break
+         count += value
+     return count
+</pre><h3>Mutant 1006</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -3,7 +3,7 @@
+     while True:
+         value = value // 3 - 2
+         if value < 0:
+-            break
++            continue
+         count += value
+     return count
+ 
+</pre><h3>Mutant 1007</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -4,7 +4,7 @@
+         value = value // 3 - 2
+         if value < 0:
+             break
+-        count += value
++        count = value
+     return count
+ 
+ 
+</pre><h3>Mutant 1008</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -4,7 +4,7 @@
+         value = value // 3 - 2
+         if value < 0:
+             break
+-        count += value
++        count -= value
+     return count
+ 
+ 
+</pre><h3>Mutant 1009</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -13,5 +13,5 @@
+ 
+ 
+ def test_calculate_fuel():
+-    assert calculate_fuel(1969) == 966
++    assert calculate_fuel(1970) == 966
+ 
+</pre><h3>Mutant 1010</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -13,5 +13,5 @@
+ 
+ 
+ def test_calculate_fuel():
+-    assert calculate_fuel(1969) == 966
++    assert calculate_fuel(1969) != 966
+ 
+</pre><h3>Mutant 1011</h3><pre>--- src/2019/day_01/part_2.py
++++ src/2019/day_01/part_2.py
+@@ -13,5 +13,5 @@
+ 
+ 
+ def test_calculate_fuel():
+-    assert calculate_fuel(1969) == 966
++    assert calculate_fuel(1969) == 967
+ 
+</pre></body></html>

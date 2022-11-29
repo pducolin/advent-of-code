@@ -1,0 +1,11 @@
+<html><body><h1>src/tests/day_15/test_part_2.py</h1>Killed 6 out of 7 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 878</h3><pre>--- src/tests/day_15/test_part_2.py
++++ src/tests/day_15/test_part_2.py
+@@ -11,6 +11,6 @@
+ 
+ def test_solution():
+     examples = [x.split(':') for x in EXAMPLE.splitlines()]
+-    for example in examples[:1]:
++    for example in examples[:2]:
+         assert solution(example[0]) == int(example[1])
+ 
+</pre></body></html>

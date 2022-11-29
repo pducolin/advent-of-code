@@ -1,0 +1,262 @@
+<html><body><h1>src/day_12/part_2.py</h1>Killed 37 out of 61 mutants<h2>Timeouts</h2>Mutants that made the test suite take a lot longer so the tests were killed.<h3>Mutant 1609</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -42,7 +42,7 @@
+         rotation = 360 - value % 360
+     while rotation > 0:
+         position = Position(position.y, -position.x)
+-        rotation -= 90
++        rotation = 90
+     return position
+ 
+ 
+</pre><h3>Mutant 1610</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -42,7 +42,7 @@
+         rotation = 360 - value % 360
+     while rotation > 0:
+         position = Position(position.y, -position.x)
+-        rotation -= 90
++        rotation += 90
+     return position
+ 
+ 
+</pre><h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1564</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -1,6 +1,6 @@
+ from collections import namedtuple
+ 
+-DIRECTIONS = ['E', 'S', 'W', 'N']
++DIRECTIONS = ['XXEXX', 'S', 'W', 'N']
+ 
+ Position = namedtuple('Position', ['x', 'y'])
+ Instruction = namedtuple('Instruction', ['direction', 'value'])
+</pre><h3>Mutant 1565</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -1,6 +1,6 @@
+ from collections import namedtuple
+ 
+-DIRECTIONS = ['E', 'S', 'W', 'N']
++DIRECTIONS = ['E', 'XXSXX', 'W', 'N']
+ 
+ Position = namedtuple('Position', ['x', 'y'])
+ Instruction = namedtuple('Instruction', ['direction', 'value'])
+</pre><h3>Mutant 1566</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -1,6 +1,6 @@
+ from collections import namedtuple
+ 
+-DIRECTIONS = ['E', 'S', 'W', 'N']
++DIRECTIONS = ['E', 'S', 'XXWXX', 'N']
+ 
+ Position = namedtuple('Position', ['x', 'y'])
+ Instruction = namedtuple('Instruction', ['direction', 'value'])
+</pre><h3>Mutant 1569</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -2,7 +2,7 @@
+ 
+ DIRECTIONS = ['E', 'S', 'W', 'N']
+ 
+-Position = namedtuple('Position', ['x', 'y'])
++Position = namedtuple('XXPositionXX', ['x', 'y'])
+ Instruction = namedtuple('Instruction', ['direction', 'value'])
+ 
+ 
+</pre><h3>Mutant 1573</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -3,7 +3,7 @@
+ DIRECTIONS = ['E', 'S', 'W', 'N']
+ 
+ Position = namedtuple('Position', ['x', 'y'])
+-Instruction = namedtuple('Instruction', ['direction', 'value'])
++Instruction = namedtuple('XXInstructionXX', ['direction', 'value'])
+ 
+ 
+ def parse_instruction(instruction):
+</pre><h3>Mutant 1585</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -22,7 +22,7 @@
+ 
+ 
+ def move_direction(position, direction, value):
+-    if direction == 'E':
++    if direction == 'XXEXX':
+         return Position(position.x + value, position.y)
+     if direction == 'S':
+         return Position(position.x, position.y - value)
+</pre><h3>Mutant 1586</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -23,7 +23,7 @@
+ 
+ def move_direction(position, direction, value):
+     if direction == 'E':
+-        return Position(position.x + value, position.y)
++        return Position(position.x - value, position.y)
+     if direction == 'S':
+         return Position(position.x, position.y - value)
+     if direction == 'W':
+</pre><h3>Mutant 1588</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -24,7 +24,7 @@
+ def move_direction(position, direction, value):
+     if direction == 'E':
+         return Position(position.x + value, position.y)
+-    if direction == 'S':
++    if direction == 'XXSXX':
+         return Position(position.x, position.y - value)
+     if direction == 'W':
+         return Position(position.x - value, position.y)
+</pre><h3>Mutant 1589</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -25,7 +25,7 @@
+     if direction == 'E':
+         return Position(position.x + value, position.y)
+     if direction == 'S':
+-        return Position(position.x, position.y - value)
++        return Position(position.x, position.y + value)
+     if direction == 'W':
+         return Position(position.x - value, position.y)
+     if direction == 'N':
+</pre><h3>Mutant 1591</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -26,7 +26,7 @@
+         return Position(position.x + value, position.y)
+     if direction == 'S':
+         return Position(position.x, position.y - value)
+-    if direction == 'W':
++    if direction == 'XXWXX':
+         return Position(position.x - value, position.y)
+     if direction == 'N':
+         return Position(position.x, position.y + value)
+</pre><h3>Mutant 1592</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -27,7 +27,7 @@
+     if direction == 'S':
+         return Position(position.x, position.y - value)
+     if direction == 'W':
+-        return Position(position.x - value, position.y)
++        return Position(position.x + value, position.y)
+     if direction == 'N':
+         return Position(position.x, position.y + value)
+ 
+</pre><h3>Mutant 1596</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -31,7 +31,7 @@
+     if direction == 'N':
+         return Position(position.x, position.y + value)
+ 
+-    raise Exception('Bad direction {}'.format(direction))
++    raise Exception('XXBad direction {}XX'.format(direction))
+ 
+ 
+ def turn(position, direction, value):
+</pre><h3>Mutant 1599</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -38,7 +38,7 @@
+     rotation = value
+     # rotation of x degrees counter-clockwise equals a rotation of 360º-x
+     # taking value modulo 360 to support values > 360
+-    if direction == 'L':
++    if direction == 'XXLXX':
+         rotation = 360 - value % 360
+     while rotation > 0:
+         position = Position(position.y, -position.x)
+</pre><h3>Mutant 1600</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -39,7 +39,7 @@
+     # rotation of x degrees counter-clockwise equals a rotation of 360º-x
+     # taking value modulo 360 to support values > 360
+     if direction == 'L':
+-        rotation = 360 - value % 360
++        rotation = 361 - value % 360
+     while rotation > 0:
+         position = Position(position.y, -position.x)
+         rotation -= 90
+</pre><h3>Mutant 1601</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -39,7 +39,7 @@
+     # rotation of x degrees counter-clockwise equals a rotation of 360º-x
+     # taking value modulo 360 to support values > 360
+     if direction == 'L':
+-        rotation = 360 - value % 360
++        rotation = 360 + value % 360
+     while rotation > 0:
+         position = Position(position.y, -position.x)
+         rotation -= 90
+</pre><h3>Mutant 1602</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -39,7 +39,7 @@
+     # rotation of x degrees counter-clockwise equals a rotation of 360º-x
+     # taking value modulo 360 to support values > 360
+     if direction == 'L':
+-        rotation = 360 - value % 360
++        rotation = 360 - value / 360
+     while rotation > 0:
+         position = Position(position.y, -position.x)
+         rotation -= 90
+</pre><h3>Mutant 1603</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -39,7 +39,7 @@
+     # rotation of x degrees counter-clockwise equals a rotation of 360º-x
+     # taking value modulo 360 to support values > 360
+     if direction == 'L':
+-        rotation = 360 - value % 360
++        rotation = 360 - value % 361
+     while rotation > 0:
+         position = Position(position.y, -position.x)
+         rotation -= 90
+</pre><h3>Mutant 1604</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -39,7 +39,7 @@
+     # rotation of x degrees counter-clockwise equals a rotation of 360º-x
+     # taking value modulo 360 to support values > 360
+     if direction == 'L':
+-        rotation = 360 - value % 360
++        rotation = None
+     while rotation > 0:
+         position = Position(position.y, -position.x)
+         rotation -= 90
+</pre><h3>Mutant 1606</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -40,7 +40,7 @@
+     # taking value modulo 360 to support values > 360
+     if direction == 'L':
+         rotation = 360 - value % 360
+-    while rotation > 0:
++    while rotation > 1:
+         position = Position(position.y, -position.x)
+         rotation -= 90
+     return position
+</pre><h3>Mutant 1611</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -42,7 +42,7 @@
+         rotation = 360 - value % 360
+     while rotation > 0:
+         position = Position(position.y, -position.x)
+-        rotation -= 90
++        rotation -= 91
+     return position
+ 
+ 
+</pre><h3>Mutant 1612</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -47,7 +47,7 @@
+ 
+ 
+ def move_to_waypoint(ship_position, waypoint_position, value):
+-    return Position(ship_position.x + waypoint_position.x * value, ship_position.y + waypoint_position.y * value)
++    return Position(ship_position.x - waypoint_position.x * value, ship_position.y + waypoint_position.y * value)
+ 
+ 
+ def manhattan_distance(position):
+</pre><h3>Mutant 1614</h3><pre>--- src/day_12/part_2.py
++++ src/day_12/part_2.py
+@@ -47,7 +47,7 @@
+ 
+ 
+ def move_to_waypoint(ship_position, waypoint_position, value):
+-    return Position(ship_position.x + waypoint_position.x * value, ship_position.y + waypoint_position.y * value)
++    return Position(ship_position.x + waypoint_position.x * value, ship_position.y - waypoint_position.y * value)
+ 
+ 
+ def manhattan_distance(position):
+</pre></body></html>

@@ -1,0 +1,144 @@
+<html><body><h1>src/day_11/part_1.py</h1>Killed 108 out of 121 mutants<h2>Timeouts</h2>Mutants that made the test suite take a lot longer so the tests were killed.<h3>Mutant 674</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -112,7 +112,7 @@
+             neighbours_count = count_neighbours(seats, x, y)
+             # If a seat is empty (L) and there are no occupied seats adjacent to it,
+             #  the seat becomes occupied.
+-            if is_empty(seats, x, y) and neighbours_count[SEAT_OCCUPIED] == 0:
++            if is_empty(seats, x, y) or neighbours_count[SEAT_OCCUPIED] == 0:
+                 row = result_seats[y][:x] + SEAT_OCCUPIED
+                 if can_go_W(seats, x, y):
+                     x_w = x + 1
+</pre><h3>Mutant 685</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -120,7 +120,7 @@
+                 result_seats[y] = row
+             # If a seat is occupied (#) and four or more seats adjacent to it are also occupied,
+             # the seat becomes empty.
+-            elif is_occupied(seats, x, y) and neighbours_count[SEAT_OCCUPIED] >= 4:
++            elif is_occupied(seats, x, y) or neighbours_count[SEAT_OCCUPIED] >= 4:
+                 row = result_seats[y][:x] + SEAT_EMPTY
+                 if can_go_W(seats, x, y):
+                     x_w = x + 1
+</pre><h3>Mutant 698</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -134,7 +134,7 @@
+     while True:
+         processed_seats = execute_pass(seats)
+         if processed_seats == seats:
+-            break
++            continue
+         seats = processed_seats
+ 
+     seats = ''.join(seats)
+</pre><h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 590</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -14,7 +14,7 @@
+ 
+ 
+ def can_go_N(seats, x, y):
+-    return y > 0
++    return y > 1
+ 
+ 
+ def can_go_E(seats, x, y):
+</pre><h3>Mutant 592</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -18,7 +18,7 @@
+ 
+ 
+ def can_go_E(seats, x, y):
+-    return x > 0
++    return x > 1
+ 
+ 
+ def can_go_W(seats, x, y):
+</pre><h3>Mutant 593</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -22,7 +22,7 @@
+ 
+ 
+ def can_go_W(seats, x, y):
+-    width = len(seats[0])
++    width = len(seats[1])
+     return x < width - 1
+ 
+ 
+</pre><h3>Mutant 606</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -48,7 +48,7 @@
+ 
+ 
+ def count_neighbours(seats, x, y):
+-    neighbours_count = {SEAT_EMPTY: 0, SEAT_OCCUPIED: 0, FLOOR: 0}
++    neighbours_count = {SEAT_EMPTY: 1, SEAT_OCCUPIED: 0, FLOOR: 0}
+     #     NE     N    NW
+     #    y - 1|y - 1|y - 1
+     #    x - 1|  x  |x + 1
+</pre><h3>Mutant 608</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -48,7 +48,7 @@
+ 
+ 
+ def count_neighbours(seats, x, y):
+-    neighbours_count = {SEAT_EMPTY: 0, SEAT_OCCUPIED: 0, FLOOR: 0}
++    neighbours_count = {SEAT_EMPTY: 0, SEAT_OCCUPIED: 0, FLOOR: 1}
+     #     NE     N    NW
+     #    y - 1|y - 1|y - 1
+     #    x - 1|  x  |x + 1
+</pre><h3>Mutant 615</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -63,7 +63,7 @@
+     # check NE
+     if can_go_NE(seats, x, y):
+         ne = seats[y - 1][x - 1]
+-        neighbours_count[ne] += 1
++        neighbours_count[ne] = 1
+ 
+     # check N
+     if can_go_N(seats, x, y):
+</pre><h3>Mutant 619</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -67,7 +67,7 @@
+ 
+     # check N
+     if can_go_N(seats, x, y):
+-        n = seats[y - 1][x]
++        n = seats[y - 2][x]
+         neighbours_count[n] += 1
+ 
+     # check NW
+</pre><h3>Mutant 626</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -72,7 +72,7 @@
+ 
+     # check NW
+     if can_go_NW(seats, x, y):
+-        nw = seats[y - 1][x + 1]
++        nw = seats[y - 1][x - 1]
+         neighbours_count[nw] += 1
+ 
+     # check W
+</pre><h3>Mutant 666</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -104,7 +104,7 @@
+ 
+ 
+ def execute_pass(seats):
+-    width = len(seats[0])
++    width = len(seats[1])
+     height = len(seats)
+     result_seats = deepcopy(seats)
+     for x in range(width):
+</pre><h3>Mutant 700</h3><pre>--- src/day_11/part_1.py
++++ src/day_11/part_1.py
+@@ -137,7 +137,7 @@
+             break
+         seats = processed_seats
+ 
+-    seats = ''.join(seats)
++    seats = 'XXXX'.join(seats)
+     # How many seats end up occupied?
+     return seats.count(SEAT_OCCUPIED)
+ 
+</pre></body></html>

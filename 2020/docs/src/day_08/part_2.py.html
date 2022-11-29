@@ -1,0 +1,306 @@
+<html><body><h1>src/day_08/part_2.py</h1>Killed 56 out of 84 mutants<h2>Timeouts</h2>Mutants that made the test suite take a lot longer so the tests were killed.<h3>Mutant 1125</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -22,7 +22,7 @@
+         swapped_index = 0
+         while swapped_index < len(self.lines):
+             while self.lines[swapped_index]['command'].operation == 'acc':
+-                swapped_index += 1
++                swapped_index = 1
+             self.lines[swapped_index]['swapped'] = True
+             if self.run():
+                 # successfully executed
+</pre><h3>Mutant 1126</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -22,7 +22,7 @@
+         swapped_index = 0
+         while swapped_index < len(self.lines):
+             while self.lines[swapped_index]['command'].operation == 'acc':
+-                swapped_index += 1
++                swapped_index -= 1
+             self.lines[swapped_index]['swapped'] = True
+             if self.run():
+                 # successfully executed
+</pre><h3>Mutant 1132</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -28,7 +28,7 @@
+                 # successfully executed
+                 break
+             self.reset()
+-            swapped_index += 1
++            swapped_index = 1
+ 
+     def run(self):
+         while True:
+</pre><h3>Mutant 1133</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -28,7 +28,7 @@
+                 # successfully executed
+                 break
+             self.reset()
+-            swapped_index += 1
++            swapped_index -= 1
+ 
+     def run(self):
+         while True:
+</pre><h3>Mutant 1144</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -41,7 +41,7 @@
+     def execute_line(self):
+         current_command = self.lines[self.next_line_index]['command']
+         is_swapped = self.lines[self.next_line_index]['swapped']
+-        self.lines[self.next_line_index]['executed'] = True
++        self.lines[self.next_line_index]['XXexecutedXX'] = True
+         value = int(current_command.argument)
+ 
+         operation = current_command.operation
+</pre><h3>Mutant 1145</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -41,7 +41,7 @@
+     def execute_line(self):
+         current_command = self.lines[self.next_line_index]['command']
+         is_swapped = self.lines[self.next_line_index]['swapped']
+-        self.lines[self.next_line_index]['executed'] = True
++        self.lines[self.next_line_index]['executed'] = False
+         value = int(current_command.argument)
+ 
+         operation = current_command.operation
+</pre><h3>Mutant 1146</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -41,7 +41,7 @@
+     def execute_line(self):
+         current_command = self.lines[self.next_line_index]['command']
+         is_swapped = self.lines[self.next_line_index]['swapped']
+-        self.lines[self.next_line_index]['executed'] = True
++        self.lines[self.next_line_index]['executed'] = None
+         value = int(current_command.argument)
+ 
+         operation = current_command.operation
+</pre><h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1095</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -1,6 +1,6 @@
+ from collections import namedtuple
+ 
+-Command = namedtuple('Command', ['operation', 'argument'])
++Command = namedtuple('XXCommandXX', ['operation', 'argument'])
+ 
+ 
+ class ProgramFixer:
+</pre><h3>Mutant 1100</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -6,7 +6,7 @@
+ class ProgramFixer:
+     def __init__(self, data):
+         self.lines = [
+-            {'command': line, 'swapped': False, 'executed': False} for line in ProgramFixer._parse_program(data)
++            {'command': line, 'XXswappedXX': False, 'executed': False} for line in ProgramFixer._parse_program(data)
+         ]
+         self.next_line_index = 0
+         self.accumulator = 0
+</pre><h3>Mutant 1101</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -6,7 +6,7 @@
+ class ProgramFixer:
+     def __init__(self, data):
+         self.lines = [
+-            {'command': line, 'swapped': False, 'executed': False} for line in ProgramFixer._parse_program(data)
++            {'command': line, 'swapped': True, 'executed': False} for line in ProgramFixer._parse_program(data)
+         ]
+         self.next_line_index = 0
+         self.accumulator = 0
+</pre><h3>Mutant 1102</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -6,7 +6,7 @@
+ class ProgramFixer:
+     def __init__(self, data):
+         self.lines = [
+-            {'command': line, 'swapped': False, 'executed': False} for line in ProgramFixer._parse_program(data)
++            {'command': line, 'swapped': False, 'XXexecutedXX': False} for line in ProgramFixer._parse_program(data)
+         ]
+         self.next_line_index = 0
+         self.accumulator = 0
+</pre><h3>Mutant 1103</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -6,7 +6,7 @@
+ class ProgramFixer:
+     def __init__(self, data):
+         self.lines = [
+-            {'command': line, 'swapped': False, 'executed': False} for line in ProgramFixer._parse_program(data)
++            {'command': line, 'swapped': False, 'executed': True} for line in ProgramFixer._parse_program(data)
+         ]
+         self.next_line_index = 0
+         self.accumulator = 0
+</pre><h3>Mutant 1105</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -8,7 +8,7 @@
+         self.lines = [
+             {'command': line, 'swapped': False, 'executed': False} for line in ProgramFixer._parse_program(data)
+         ]
+-        self.next_line_index = 0
++        self.next_line_index = 1
+         self.accumulator = 0
+ 
+     def reset(self):
+</pre><h3>Mutant 1107</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -9,7 +9,7 @@
+             {'command': line, 'swapped': False, 'executed': False} for line in ProgramFixer._parse_program(data)
+         ]
+         self.next_line_index = 0
+-        self.accumulator = 0
++        self.accumulator = 1
+ 
+     def reset(self):
+         self.next_line_index = 0
+</pre><h3>Mutant 1108</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -9,7 +9,7 @@
+             {'command': line, 'swapped': False, 'executed': False} for line in ProgramFixer._parse_program(data)
+         ]
+         self.next_line_index = 0
+-        self.accumulator = 0
++        self.accumulator = None
+ 
+     def reset(self):
+         self.next_line_index = 0
+</pre><h3>Mutant 1109</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -12,7 +12,7 @@
+         self.accumulator = 0
+ 
+     def reset(self):
+-        self.next_line_index = 0
++        self.next_line_index = 1
+         self.accumulator = 0
+         for line in self.lines:
+             line['swapped'] = False
+</pre><h3>Mutant 1115</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -15,7 +15,7 @@
+         self.next_line_index = 0
+         self.accumulator = 0
+         for line in self.lines:
+-            line['swapped'] = False
++            line['swapped'] = None
+             line['executed'] = False
+ 
+     def fix(self):
+</pre><h3>Mutant 1118</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -16,7 +16,7 @@
+         self.accumulator = 0
+         for line in self.lines:
+             line['swapped'] = False
+-            line['executed'] = False
++            line['executed'] = None
+ 
+     def fix(self):
+         swapped_index = 0
+</pre><h3>Mutant 1119</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -19,7 +19,7 @@
+             line['executed'] = False
+ 
+     def fix(self):
+-        swapped_index = 0
++        swapped_index = 1
+         while swapped_index < len(self.lines):
+             while self.lines[swapped_index]['command'].operation == 'acc':
+                 swapped_index += 1
+</pre><h3>Mutant 1121</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -20,7 +20,7 @@
+ 
+     def fix(self):
+         swapped_index = 0
+-        while swapped_index < len(self.lines):
++        while swapped_index <= len(self.lines):
+             while self.lines[swapped_index]['command'].operation == 'acc':
+                 swapped_index += 1
+             self.lines[swapped_index]['swapped'] = True
+</pre><h3>Mutant 1124</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -21,7 +21,7 @@
+     def fix(self):
+         swapped_index = 0
+         while swapped_index < len(self.lines):
+-            while self.lines[swapped_index]['command'].operation == 'acc':
++            while self.lines[swapped_index]['command'].operation == 'XXaccXX':
+                 swapped_index += 1
+             self.lines[swapped_index]['swapped'] = True
+             if self.run():
+</pre><h3>Mutant 1127</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -22,7 +22,7 @@
+         swapped_index = 0
+         while swapped_index < len(self.lines):
+             while self.lines[swapped_index]['command'].operation == 'acc':
+-                swapped_index += 1
++                swapped_index += 2
+             self.lines[swapped_index]['swapped'] = True
+             if self.run():
+                 # successfully executed
+</pre><h3>Mutant 1134</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -28,7 +28,7 @@
+                 # successfully executed
+                 break
+             self.reset()
+-            swapped_index += 1
++            swapped_index += 2
+ 
+     def run(self):
+         while True:
+</pre><h3>Mutant 1166</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -67,7 +67,6 @@
+     def _nop(self):
+         self.next_line_index += 1
+ 
+-    @staticmethod
+     def _parse_program(data):
+         lines = []
+         for line in data:
+</pre><h3>Mutant 1170</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -75,7 +75,6 @@
+             lines.append(Command(operation, argument))
+         return lines
+ 
+-    @staticmethod
+     def swap_operation(operation):
+         operation_swaps = {'jmp': 'nop', 'nop': 'jmp', 'acc': 'acc'}
+         return operation_swaps[operation]
+</pre><h3>Mutant 1174</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -77,7 +77,7 @@
+ 
+     @staticmethod
+     def swap_operation(operation):
+-        operation_swaps = {'jmp': 'nop', 'nop': 'jmp', 'acc': 'acc'}
++        operation_swaps = {'jmp': 'nop', 'nop': 'XXjmpXX', 'acc': 'acc'}
+         return operation_swaps[operation]
+ 
+ 
+</pre><h3>Mutant 1175</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -77,7 +77,7 @@
+ 
+     @staticmethod
+     def swap_operation(operation):
+-        operation_swaps = {'jmp': 'nop', 'nop': 'jmp', 'acc': 'acc'}
++        operation_swaps = {'jmp': 'nop', 'nop': 'jmp', 'XXaccXX': 'acc'}
+         return operation_swaps[operation]
+ 
+ 
+</pre><h3>Mutant 1176</h3><pre>--- src/day_08/part_2.py
++++ src/day_08/part_2.py
+@@ -77,7 +77,7 @@
+ 
+     @staticmethod
+     def swap_operation(operation):
+-        operation_swaps = {'jmp': 'nop', 'nop': 'jmp', 'acc': 'acc'}
++        operation_swaps = {'jmp': 'nop', 'nop': 'jmp', 'acc': 'XXaccXX'}
+         return operation_swaps[operation]
+ 
+ 
+</pre></body></html>

@@ -1,0 +1,19 @@
+[tool.black]
+exclude = '''
+# Directories
+/(
+    \.git
+  | \.pytest_cache
+  | template
+)/
+  |
+# Files
+(
+    # TODO: remove when upstream addresses https://github.com/DataDog/integrations-core/blob/c71e6d7204192a8002109da92452003598df2d28/datadog_checks_dev/datadog_checks/dev/tooling/signing.py#L9-L14
+    datadog_checks/dev/tooling/signing\.py$
+)
+'''
+include = '\.pyi?$'
+line-length = 120
+py36 = false
+skip-string-normalization = true

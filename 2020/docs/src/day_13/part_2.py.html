@@ -1,0 +1,184 @@
+<html><body><h1>src/day_13/part_2.py</h1>Killed 34 out of 51 mutants<h2>Timeouts</h2>Mutants that made the test suite take a lot longer so the tests were killed.<h3>Mutant 1362</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -10,7 +10,7 @@
+         bus_id = bus_ids[i]
+         if bus_id == 'x':
+             continue
+-        buses.append(BusSchedule(bus_id, i % bus_id))
++        buses.append(BusSchedule(bus_id, i / bus_id))
+     return buses
+ 
+ 
+</pre><h3>Mutant 1369</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -23,7 +23,7 @@
+ 
+ 
+ def wait_time(t, bus_id):
+-    return (bus_id - t % bus_id) % bus_id
++    return (bus_id - t % bus_id) / bus_id
+ 
+ 
+ def find_common_time(bus_a, bus_b, start_time):
+</pre><h3>Mutant 1377</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -31,7 +31,7 @@
+     delta = bus_a.bus_id
+     while True:
+         if t < bus_a.bus_id or t < bus_b.bus_id:
+-            t += delta
++            t -= delta
+             continue
+         if wait_time(t, bus_b.bus_id) != bus_b.delta:
+             t += delta
+</pre><h3>Mutant 1380</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -34,7 +34,7 @@
+             t += delta
+             continue
+         if wait_time(t, bus_b.bus_id) != bus_b.delta:
+-            t += delta
++            t = delta
+             continue
+         return t
+ 
+</pre><h3>Mutant 1381</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -34,7 +34,7 @@
+             t += delta
+             continue
+         if wait_time(t, bus_b.bus_id) != bus_b.delta:
+-            t += delta
++            t -= delta
+             continue
+         return t
+ 
+</pre><h3>Mutant 1395</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -50,7 +50,7 @@
+         common_time = find_common_time(bus_a, bus_b, t)
+         if len(buses) == 0:
+             return common_time
+-        buses.insert(0, BusSchedule(bus_a.bus_id * bus_b.bus_id, 0))
++        buses.insert(0, BusSchedule(bus_a.bus_id / bus_b.bus_id, 0))
+         t = common_time
+ 
+ 
+</pre><h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1349</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -1,6 +1,6 @@
+ from collections import namedtuple
+ 
+-BusSchedule = namedtuple('BusSchedule', ['bus_id', 'delta'])
++BusSchedule = namedtuple('XXBusScheduleXX', ['bus_id', 'delta'])
+ 
+ 
+ def parse_bus_schedule(data):
+</pre><h3>Mutant 1363</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -15,7 +15,7 @@
+ 
+ 
+ def find_max_bus_id(buses):
+-    max_bus_id = 0
++    max_bus_id = 1
+     for _, bus in buses.items():
+         if bus.bus_id > max_bus_id:
+             max_bus_id = bus.bus_id
+</pre><h3>Mutant 1364</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -15,7 +15,7 @@
+ 
+ 
+ def find_max_bus_id(buses):
+-    max_bus_id = 0
++    max_bus_id = None
+     for _, bus in buses.items():
+         if bus.bus_id > max_bus_id:
+             max_bus_id = bus.bus_id
+</pre><h3>Mutant 1365</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -17,7 +17,7 @@
+ def find_max_bus_id(buses):
+     max_bus_id = 0
+     for _, bus in buses.items():
+-        if bus.bus_id > max_bus_id:
++        if bus.bus_id >= max_bus_id:
+             max_bus_id = bus.bus_id
+     return max_bus_id
+ 
+</pre><h3>Mutant 1366</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -18,7 +18,7 @@
+     max_bus_id = 0
+     for _, bus in buses.items():
+         if bus.bus_id > max_bus_id:
+-            max_bus_id = bus.bus_id
++            max_bus_id = None
+     return max_bus_id
+ 
+ 
+</pre><h3>Mutant 1373</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -30,7 +30,7 @@
+     t = start_time
+     delta = bus_a.bus_id
+     while True:
+-        if t < bus_a.bus_id or t < bus_b.bus_id:
++        if t <= bus_a.bus_id or t < bus_b.bus_id:
+             t += delta
+             continue
+         if wait_time(t, bus_b.bus_id) != bus_b.delta:
+</pre><h3>Mutant 1374</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -30,7 +30,7 @@
+     t = start_time
+     delta = bus_a.bus_id
+     while True:
+-        if t < bus_a.bus_id or t < bus_b.bus_id:
++        if t < bus_a.bus_id or t <= bus_b.bus_id:
+             t += delta
+             continue
+         if wait_time(t, bus_b.bus_id) != bus_b.delta:
+</pre><h3>Mutant 1375</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -30,7 +30,7 @@
+     t = start_time
+     delta = bus_a.bus_id
+     while True:
+-        if t < bus_a.bus_id or t < bus_b.bus_id:
++        if t < bus_a.bus_id and t < bus_b.bus_id:
+             t += delta
+             continue
+         if wait_time(t, bus_b.bus_id) != bus_b.delta:
+</pre><h3>Mutant 1396</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -50,7 +50,7 @@
+         common_time = find_common_time(bus_a, bus_b, t)
+         if len(buses) == 0:
+             return common_time
+-        buses.insert(0, BusSchedule(bus_a.bus_id * bus_b.bus_id, 0))
++        buses.insert(0, BusSchedule(bus_a.bus_id * bus_b.bus_id, 1))
+         t = common_time
+ 
+ 
+</pre><h3>Mutant 1398</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -55,6 +55,6 @@
+ 
+ 
+ def solution(data):
+-    data = data.splitlines()
++    data = None
+     return find_departure_time(data[1])
+ 
+</pre><h3>Mutant 1399</h3><pre>--- src/day_13/part_2.py
++++ src/day_13/part_2.py
+@@ -56,5 +56,5 @@
+ 
+ def solution(data):
+     data = data.splitlines()
+-    return find_departure_time(data[1])
++    return find_departure_time(data[2])
+ 
+</pre></body></html>

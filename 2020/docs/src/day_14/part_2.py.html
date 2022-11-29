@@ -1,0 +1,89 @@
+<html><body><h1>src/day_14/part_2.py</h1>Killed 47 out of 55 mutants<h2>Timeouts</h2>Mutants that made the test suite take a lot longer so the tests were killed.<h3>Mutant 1441</h3><pre>--- src/day_14/part_2.py
++++ src/day_14/part_2.py
+@@ -38,7 +38,7 @@
+     lines = []
+     while len(to_replace) > 0:
+         replacing = to_replace.pop(0)
+-        x_index = replacing.find('X')
++        x_index = replacing.find('XXXXX')
+         replaced_with_0 = replace_at(replacing, x_index, '0')
+         replaced_with_1 = replace_at(replacing, x_index, '1')
+         if 'X' in replaced_with_0:
+</pre><h3>Mutant 1443</h3><pre>--- src/day_14/part_2.py
++++ src/day_14/part_2.py
+@@ -39,7 +39,7 @@
+     while len(to_replace) > 0:
+         replacing = to_replace.pop(0)
+         x_index = replacing.find('X')
+-        replaced_with_0 = replace_at(replacing, x_index, '0')
++        replaced_with_0 = replace_at(replacing, x_index, 'XX0XX')
+         replaced_with_1 = replace_at(replacing, x_index, '1')
+         if 'X' in replaced_with_0:
+             to_replace.append(replaced_with_0)
+</pre><h3>Mutant 1445</h3><pre>--- src/day_14/part_2.py
++++ src/day_14/part_2.py
+@@ -40,7 +40,7 @@
+         replacing = to_replace.pop(0)
+         x_index = replacing.find('X')
+         replaced_with_0 = replace_at(replacing, x_index, '0')
+-        replaced_with_1 = replace_at(replacing, x_index, '1')
++        replaced_with_1 = replace_at(replacing, x_index, 'XX1XX')
+         if 'X' in replaced_with_0:
+             to_replace.append(replaced_with_0)
+             to_replace.append(replaced_with_1)
+</pre><h3>Mutant 1450</h3><pre>--- src/day_14/part_2.py
++++ src/day_14/part_2.py
+@@ -51,7 +51,7 @@
+ 
+ 
+ def replace_at(s, index, replacement):
+-    after_index = index + 1
++    after_index = index - 1
+     return s[:index] + replacement + s[after_index:]
+ 
+ 
+</pre><h3>Mutant 1452</h3><pre>--- src/day_14/part_2.py
++++ src/day_14/part_2.py
+@@ -51,7 +51,7 @@
+ 
+ 
+ def replace_at(s, index, replacement):
+-    after_index = index + 1
++    after_index = None
+     return s[:index] + replacement + s[after_index:]
+ 
+ 
+</pre><h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1434</h3><pre>--- src/day_14/part_2.py
++++ src/day_14/part_2.py
+@@ -33,7 +33,7 @@
+ 
+ def from_binary_string(bin_string):
+     if 'X' not in bin_string:
+-        return [int(bin_string, 2)]
++        return [int(bin_string, 3)]
+     to_replace = [bin_string]
+     lines = []
+     while len(to_replace) > 0:
+</pre><h3>Mutant 1449</h3><pre>--- src/day_14/part_2.py
++++ src/day_14/part_2.py
+@@ -47,7 +47,7 @@
+         else:
+             lines.append(replaced_with_0)
+             lines.append(replaced_with_1)
+-    return [int(x, 2) for x in lines]
++    return [int(x, 3) for x in lines]
+ 
+ 
+ def replace_at(s, index, replacement):
+</pre><h3>Mutant 1461</h3><pre>--- src/day_14/part_2.py
++++ src/day_14/part_2.py
+@@ -66,7 +66,7 @@
+ 
+ 
+ def apply_instructions(instructions):
+-    mask = {}
++    mask = None
+     memory = {}
+     for instruction in instructions:
+         if 'mask' in instruction:
+</pre></body></html>

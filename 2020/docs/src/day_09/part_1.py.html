@@ -1,0 +1,65 @@
+<html><body><h1>src/day_09/part_1.py</h1>Killed 12 out of 18 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 1250</h3><pre>--- src/day_09/part_1.py
++++ src/day_09/part_1.py
+@@ -1,5 +1,5 @@
+ def has_sum_in_previous_numbers(target_index, lenght, numbers):
+-    from_index = max(0, target_index - lenght)
++    from_index = max(1, target_index - lenght)
+     for i in range(from_index, target_index):
+         if numbers[i] > numbers[target_index]:
+             continue
+</pre><h3>Mutant 1253</h3><pre>--- src/day_09/part_1.py
++++ src/day_09/part_1.py
+@@ -1,7 +1,7 @@
+ def has_sum_in_previous_numbers(target_index, lenght, numbers):
+     from_index = max(0, target_index - lenght)
+     for i in range(from_index, target_index):
+-        if numbers[i] > numbers[target_index]:
++        if numbers[i] >= numbers[target_index]:
+             continue
+         complementar = numbers[target_index] - numbers[i]
+         next_index = i + 1
+</pre><h3>Mutant 1254</h3><pre>--- src/day_09/part_1.py
++++ src/day_09/part_1.py
+@@ -2,7 +2,7 @@
+     from_index = max(0, target_index - lenght)
+     for i in range(from_index, target_index):
+         if numbers[i] > numbers[target_index]:
+-            continue
++            break
+         complementar = numbers[target_index] - numbers[i]
+         next_index = i + 1
+         if complementar in set(numbers[from_index:i]) or complementar in set(numbers[next_index:target_index]):
+</pre><h3>Mutant 1257</h3><pre>--- src/day_09/part_1.py
++++ src/day_09/part_1.py
+@@ -4,7 +4,7 @@
+         if numbers[i] > numbers[target_index]:
+             continue
+         complementar = numbers[target_index] - numbers[i]
+-        next_index = i + 1
++        next_index = i - 1
+         if complementar in set(numbers[from_index:i]) or complementar in set(numbers[next_index:target_index]):
+             return True
+     return False
+</pre><h3>Mutant 1258</h3><pre>--- src/day_09/part_1.py
++++ src/day_09/part_1.py
+@@ -4,7 +4,7 @@
+         if numbers[i] > numbers[target_index]:
+             continue
+         complementar = numbers[target_index] - numbers[i]
+-        next_index = i + 1
++        next_index = i + 2
+         if complementar in set(numbers[from_index:i]) or complementar in set(numbers[next_index:target_index]):
+             return True
+     return False
+</pre><h3>Mutant 1265</h3><pre>--- src/day_09/part_1.py
++++ src/day_09/part_1.py
+@@ -10,7 +10,7 @@
+     return False
+ 
+ 
+-def solution(data, lenght=25):
++def solution(data, lenght=26):
+     numbers = [int(x) for x in data.splitlines()]
+     for i in range(lenght, len(numbers)):
+         if not has_sum_in_previous_numbers(i, lenght, numbers):
+</pre></body></html>

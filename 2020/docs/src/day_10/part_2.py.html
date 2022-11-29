@@ -1,0 +1,155 @@
+<html><body><h1>src/day_10/part_2.py</h1>Killed 49 out of 63 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 329</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -2,7 +2,7 @@
+     numbers = [int(x) for x in data.splitlines()]
+     numbers.append(0)
+     numbers.sort()
+-    counters = {1: 0, 2: 0, 3: 0}
++    counters = {1: 1, 2: 0, 3: 0}
+     groups_counters = []
+     previous_delta = 0
+     print('Numbers: {}'.format(numbers))
+</pre><h3>Mutant 330</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -2,7 +2,7 @@
+     numbers = [int(x) for x in data.splitlines()]
+     numbers.append(0)
+     numbers.sort()
+-    counters = {1: 0, 2: 0, 3: 0}
++    counters = {1: 0, 3: 0, 3: 0}
+     groups_counters = []
+     previous_delta = 0
+     print('Numbers: {}'.format(numbers))
+</pre><h3>Mutant 331</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -2,7 +2,7 @@
+     numbers = [int(x) for x in data.splitlines()]
+     numbers.append(0)
+     numbers.sort()
+-    counters = {1: 0, 2: 0, 3: 0}
++    counters = {1: 0, 2: 1, 3: 0}
+     groups_counters = []
+     previous_delta = 0
+     print('Numbers: {}'.format(numbers))
+</pre><h3>Mutant 333</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -2,7 +2,7 @@
+     numbers = [int(x) for x in data.splitlines()]
+     numbers.append(0)
+     numbers.sort()
+-    counters = {1: 0, 2: 0, 3: 0}
++    counters = {1: 0, 2: 0, 3: 1}
+     groups_counters = []
+     previous_delta = 0
+     print('Numbers: {}'.format(numbers))
+</pre><h3>Mutant 337</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -4,7 +4,7 @@
+     numbers.sort()
+     counters = {1: 0, 2: 0, 3: 0}
+     groups_counters = []
+-    previous_delta = 0
++    previous_delta = None
+     print('Numbers: {}'.format(numbers))
+     for i in range(len(numbers) - 1):
+         delta_from_next = numbers[i + 1] - numbers[i]
+</pre><h3>Mutant 338</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -5,7 +5,7 @@
+     counters = {1: 0, 2: 0, 3: 0}
+     groups_counters = []
+     previous_delta = 0
+-    print('Numbers: {}'.format(numbers))
++    print('XXNumbers: {}XX'.format(numbers))
+     for i in range(len(numbers) - 1):
+         delta_from_next = numbers[i + 1] - numbers[i]
+         counters[delta_from_next] += 1
+</pre><h3>Mutant 345</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -8,7 +8,7 @@
+     print('Numbers: {}'.format(numbers))
+     for i in range(len(numbers) - 1):
+         delta_from_next = numbers[i + 1] - numbers[i]
+-        counters[delta_from_next] += 1
++        counters[delta_from_next] = 1
+         print('Current number[{}]: {}, delta from next: {}'.format(i, numbers[i], delta_from_next))
+         if delta_from_next < 3:
+             if previous_delta != delta_from_next:
+</pre><h3>Mutant 346</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -8,7 +8,7 @@
+     print('Numbers: {}'.format(numbers))
+     for i in range(len(numbers) - 1):
+         delta_from_next = numbers[i + 1] - numbers[i]
+-        counters[delta_from_next] += 1
++        counters[delta_from_next] -= 1
+         print('Current number[{}]: {}, delta from next: {}'.format(i, numbers[i], delta_from_next))
+         if delta_from_next < 3:
+             if previous_delta != delta_from_next:
+</pre><h3>Mutant 347</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -8,7 +8,7 @@
+     print('Numbers: {}'.format(numbers))
+     for i in range(len(numbers) - 1):
+         delta_from_next = numbers[i + 1] - numbers[i]
+-        counters[delta_from_next] += 1
++        counters[delta_from_next] += 2
+         print('Current number[{}]: {}, delta from next: {}'.format(i, numbers[i], delta_from_next))
+         if delta_from_next < 3:
+             if previous_delta != delta_from_next:
+</pre><h3>Mutant 348</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -9,7 +9,7 @@
+     for i in range(len(numbers) - 1):
+         delta_from_next = numbers[i + 1] - numbers[i]
+         counters[delta_from_next] += 1
+-        print('Current number[{}]: {}, delta from next: {}'.format(i, numbers[i], delta_from_next))
++        print('XXCurrent number[{}]: {}, delta from next: {}XX'.format(i, numbers[i], delta_from_next))
+         if delta_from_next < 3:
+             if previous_delta != delta_from_next:
+                 groups_counters.append(1)
+</pre><h3>Mutant 359</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -16,7 +16,7 @@
+             groups_counters[-1] += 1
+         previous_delta = delta_from_next
+ 
+-    print('groups_counter {}'.format(groups_counters))
++    print('XXgroups_counter {}XX'.format(groups_counters))
+     counters[3] += 1
+     result = 1
+     for counter in groups_counters:
+</pre><h3>Mutant 361</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -17,7 +17,7 @@
+         previous_delta = delta_from_next
+ 
+     print('groups_counter {}'.format(groups_counters))
+-    counters[3] += 1
++    counters[3] = 1
+     result = 1
+     for counter in groups_counters:
+         if counter < 3:
+</pre><h3>Mutant 362</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -17,7 +17,7 @@
+         previous_delta = delta_from_next
+ 
+     print('groups_counter {}'.format(groups_counters))
+-    counters[3] += 1
++    counters[3] -= 1
+     result = 1
+     for counter in groups_counters:
+         if counter < 3:
+</pre><h3>Mutant 363</h3><pre>--- src/day_10/part_2.py
++++ src/day_10/part_2.py
+@@ -17,7 +17,7 @@
+         previous_delta = delta_from_next
+ 
+     print('groups_counter {}'.format(groups_counters))
+-    counters[3] += 1
++    counters[3] += 2
+     result = 1
+     for counter in groups_counters:
+         if counter < 3:
+</pre></body></html>

@@ -1,0 +1,22 @@
+<html><body><h1>src/day_02/part_2.py</h1>Killed 14 out of 16 mutants<h2>Survived</h2>Survived mutation testing. These mutants show holes in your test suite.<h3>Mutant 133</h3><pre>--- src/day_02/part_2.py
++++ src/day_02/part_2.py
+@@ -6,7 +6,7 @@
+         indexes, letter = rule.split()
+         index_a, index_b = [int(x) for x in indexes.split('-')]
+         letters_at_indexes = password[index_a] + password[index_b]
+-        if letters_at_indexes.count(letter) == 1:
++        if letters_at_indexes.count(letter) == 2:
+             counter += 1
+     return counter
+ 
+</pre><h3>Mutant 134</h3><pre>--- src/day_02/part_2.py
++++ src/day_02/part_2.py
+@@ -7,6 +7,6 @@
+         index_a, index_b = [int(x) for x in indexes.split('-')]
+         letters_at_indexes = password[index_a] + password[index_b]
+         if letters_at_indexes.count(letter) == 1:
+-            counter += 1
++            counter = 1
+     return counter
+ 
+</pre></body></html>
