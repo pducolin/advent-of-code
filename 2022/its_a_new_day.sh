@@ -13,6 +13,3 @@ if [ -d day_"$TODAY" ]; then
   exit 1
 fi
 cp -R template day_"$TODAY"
-# create test folder and placeholder files
-sed -i '' "s/template/day_$TODAY/" day_"$TODAY"/main.go;
-sed -i '' "s/template/day_$TODAY/" day_"$TODAY"/main_test.go;
