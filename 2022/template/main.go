@@ -17,7 +17,7 @@ func main() {
 	fmt.Println("Running part", part)
 
 	if part == 1 {
-		fmt.Println(inputData)
+		fmt.Println(part1(inputData))
 	} else {
 		fmt.Println(part2(inputData))
 	}

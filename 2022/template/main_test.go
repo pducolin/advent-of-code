@@ -9,9 +9,9 @@ import (
 const data = "Hello World !"
 
 func TestPart1(t *testing.T) {
-	assert.Equal(t, part1(data), "Hello World !", "Failed testing part 1")
+	assert.Equal(t, "Hello World !", part1(data), "Failed testing part 1")
 }
 
 func TestPart2(t *testing.T) {
-	assert.Equal(t, part2(data), "Hello World !", "Failed testing part 2")
+	assert.Equal(t, "Hello World !", part2(data), "Failed testing part 2")
 }
