@@ -108,8 +108,8 @@ func parseStacks(stackCount int, lines []string) (stacks []*Stack) {
 }
 
 func applyInstructions9000(stacks []*Stack, instructions []string) {
+	r := regexp.MustCompile(`move\ (?P<count>\d+)\ from\ (?P<from>\d+)\ to\ (?P<to>\d+)`)
 	for _, inst := range instructions {
-		r := regexp.MustCompile(`move\ (?P<count>\d+)\ from\ (?P<from>\d+)\ to\ (?P<to>\d+)`)
 		m := r.FindStringSubmatch(inst)[1:]
 		count, err := strconv.Atoi(m[0])
 		if err != nil {
