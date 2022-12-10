@@ -143,7 +143,7 @@ func parseFileSystem(data string) *filesystem.Directory {
 	}
 
 	// pop back
-	for true {
+	for {
 		if currentDir.Parent == nil {
 			break
 		}
