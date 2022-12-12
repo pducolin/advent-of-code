@@ -2,12 +2,14 @@ package main
 
 import (
 	_ "embed"
-	"errors"
 	"flag"
 	"fmt"
 	"math"
+	"sort"
 	"strconv"
 	"strings"
+
+	"container/heap"
 )
 
 //go:embed input.txt
@@ -28,21 +30,40 @@ func main() {
 }
 
 func part1(data string) string {
-	heightmap, startPosition, targetPosition := parseMap(data)
+	heightmap, startingPoint, targetPoint := parseMap(data)
 
-	currentPosition := Point{row: startPosition.row, column: startPosition.column}
-	visited := map[string]struct{}{}
-	steps, err := countMinSteps(heightmap, currentPosition, targetPosition, visited)
+	res, err := findShortestPath(heightmap, startingPoint, targetPoint)
 
 	if err != nil {
 		panic(err)
 	}
 
-	return strconv.Itoa(steps)
+	return strconv.Itoa(res)
 }
 
 func part2(data string) string {
-	return "Hello World !"
+	heightmap, _, targetPoint := parseMap(data)
+
+	startingPoints := []Point{}
+	for point, height := range heightmap {
+		if height == 0 {
+			startingPoints = append(startingPoints, point)
+		}
+	}
+
+	pathDistances := []int{}
+
+	for _, start := range startingPoints {
+		distance, err := findShortestPath(heightmap, start, targetPoint)
+		if err != nil {
+			continue
+		}
+		pathDistances = append(pathDistances, distance)
+	}
+
+	sort.Ints(pathDistances)
+
+	return strconv.Itoa(pathDistances[0])
 }
 
 type Point struct {
@@ -50,89 +71,125 @@ type Point struct {
 	column int
 }
 
-func (point Point) Equal(other Point) bool {
-	return point.row == other.row && point.column == other.column
-}
+func (point *Point) GetNeighbours(heightmap map[Point]int) (neighbours []Point) {
+	neighbours = []Point{}
+	currentHeight := heightmap[*point]
 
-func (point Point) ToString() string {
-	return fmt.Sprintf("%d,%d", point.row, point.column)
-}
-
-func (point Point) Up() Point {
-	return Point{row: point.row - 1, column: point.column}
-}
-
-func (point Point) Down() Point {
-	return Point{row: point.row + 1, column: point.column}
-}
-
-func (point Point) Left() Point {
-	return Point{row: point.row, column: point.column - 1}
-}
-
-func (point Point) Right() Point {
-	return Point{row: point.row, column: point.column + 1}
-}
-
-func (point Point) CanMoveTo(heightmap [][]int, nextPoint Point, visited map[string]struct{}) bool {
-	if !nextPoint.IsWithinMap(heightmap) {
-		return false
+	// up
+	neighbour := Point{row: point.row - 1, column: point.column}
+	if neighbourHeight, found := heightmap[neighbour]; found && neighbourHeight-currentHeight <= 1 {
+		neighbours = append(neighbours, neighbour)
 	}
 
-	if _, found := visited[nextPoint.ToString()]; found {
-		return false
+	// down
+	neighbour = Point{row: point.row + 1, column: point.column}
+	if neighbourHeight, found := heightmap[neighbour]; found && neighbourHeight-currentHeight <= 1 {
+		neighbours = append(neighbours, neighbour)
 	}
 
-	return heightmap[nextPoint.row][nextPoint.column]-heightmap[point.row][point.column] <= 1
+	// left
+	neighbour = Point{row: point.row, column: point.column - 1}
+	if neighbourHeight, found := heightmap[neighbour]; found && neighbourHeight-currentHeight <= 1 {
+		neighbours = append(neighbours, neighbour)
+	}
+
+	// right
+	neighbour = Point{row: point.row, column: point.column + 1}
+	if neighbourHeight, found := heightmap[neighbour]; found && neighbourHeight-currentHeight <= 1 {
+		neighbours = append(neighbours, neighbour)
+	}
+
+	return neighbours
 }
 
-func (point Point) IsWithinMap(heightmap [][]int) bool {
-	return point.row >= 0 && point.row < len(heightmap) &&
-		point.column >= 0 && point.column < len(heightmap[0])
-}
-
-func parseMap(data string) (heightmap [][]int, currentPosition, targetPosition Point) {
-	heightmap = [][]int{}
+func parseMap(data string) (heightmap map[Point]int, startingPoint, targetPosition Point) {
+	heightmap = map[Point]int{}
 	for rowIndex, line := range strings.Split(data, "\n") {
-		heightmap = append(heightmap, []int{})
 		for colIndex, value := range line {
+			point := Point{row: rowIndex, column: colIndex}
 			if value == 'S' {
-				currentPosition = Point{row: rowIndex, column: colIndex}
-				heightmap[rowIndex] = append(heightmap[rowIndex], 0)
+				heightmap[point] = 0
+				startingPoint = point
 				continue
 			}
 
 			if value == 'E' {
-				targetPosition = Point{row: rowIndex, column: colIndex}
-				heightmap[rowIndex] = append(heightmap[rowIndex], int('z'-'a'))
+				heightmap[point] = int('z' - 'a')
+				targetPosition = point
 				continue
 			}
 
-			heightmap[rowIndex] = append(heightmap[rowIndex], int(value-'a'))
+			heightmap[point] = int(value - 'a')
 		}
 	}
-	return heightmap, currentPosition, targetPosition
+	return heightmap, startingPoint, targetPosition
 }
 
-func countMinSteps(heightmap [][]int, from Point, to Point, visited map[string]struct{}) (minSteps int, err error) {
-	if !from.IsWithinMap(heightmap) {
-		return -1, errors.New("out of map")
+func findShortestPath(heightmap map[Point]int, startingPoint, target Point) (shortestPath int, err error) {
+	visited := map[Point]struct{}{}
+	distanceFromStartingPoint := map[Point]int{}
+
+	for point := range heightmap {
+		distanceFromStartingPoint[point] = math.MaxInt
 	}
+	distanceFromStartingPoint[startingPoint] = 0
 
-	visited[from.ToString()] = struct{}{}
-	minSteps = math.MaxInt
-	err = fmt.Errorf("no way to target from %s", from.ToString())
-	// move up, down, left, right
-	moves := []Point{from.Up(), from.Down(), from.Left(), from.Right()}
+	priorityQueue := MapPointHeap{MapPoint{
+		Point:                 startingPoint,
+		CostFromStartingPoint: 0,
+	}}
 
-	for _, nextPoint := range moves {
-		if from.CanMoveTo(heightmap, nextPoint, visited) {
-			steps, stepErr := countMinSteps(heightmap, nextPoint, to, visited)
-			if stepErr == nil && steps+1 < minSteps {
-				minSteps = steps + 1
-			}
+	// heap ensures items in queue are sorted by distance from starting point
+	heap.Init(&priorityQueue)
+
+	for priorityQueue.Len() > 0 {
+		currentMapPoint := heap.Pop(&priorityQueue).(MapPoint)
+
+		if _, found := visited[currentMapPoint.Point]; found {
+			continue
 		}
+
+		if currentMapPoint.Point == target {
+			// we are done, this is the shortest path to target
+			return currentMapPoint.CostFromStartingPoint, nil
+		}
+
+		for _, neighbour := range currentMapPoint.Point.GetNeighbours(heightmap) {
+			heap.Push(&priorityQueue, MapPoint{Point: neighbour, CostFromStartingPoint: currentMapPoint.CostFromStartingPoint + 1})
+		}
+
+		visited[currentMapPoint.Point] = struct{}{}
 	}
 
-	return minSteps, err
+	return -1, fmt.Errorf("no path from %#v to %#v", startingPoint, target)
+}
+
+// Source https://pkg.go.dev/container/heap
+
+type MapPoint struct {
+	Point                 Point
+	CostFromStartingPoint int
+}
+
+// An MapPointHeap is a min-heap of map nodes.
+type MapPointHeap []MapPoint
+
+func (h MapPointHeap) Len() int { return len(h) }
+func (h MapPointHeap) Less(i, j int) bool {
+	return h[i].CostFromStartingPoint < h[j].CostFromStartingPoint
+}
+func (h MapPointHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
+
+func (h *MapPointHeap) Push(x interface{}) {
+	// Push and Pop use pointer receivers because they modify the slice's length,
+	// not just its contents.
+	*h = append(*h, x.(MapPoint))
+}
+
+func (h *MapPointHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
 }
