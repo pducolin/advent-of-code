@@ -205,7 +205,6 @@ func (caveMap *CaveMap) DropSand() (err error) {
 			sandPoint = downRightPoint
 			continue
 		}
-
 		if isOutOfBoundariesLeft {
 			return outOfBoundaryErr
 		}
