@@ -2,13 +2,14 @@ package main
 
 import (
 	_ "embed"
-	"errors"
 	"flag"
 	"fmt"
 	"regexp"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/pducolin/advent-of-code/2022/2022/common"
 )
 
 //go:embed input.txt
@@ -85,37 +86,6 @@ func part2(data string) string {
 	return strconv.Itoa(result)
 }
 
-type Queue[T any] struct {
-	items []T
-}
-
-func NewQueue[T any]() Queue[T] {
-	return Queue[T]{
-		items: []T{},
-	}
-}
-
-func (queue *Queue[T]) Pop() T {
-	if queue.IsEmpty() {
-		panic(errors.New("empty queue"))
-	}
-	ret := queue.items[0]
-	if len(queue.items) == 1 {
-		queue.items = []T{}
-	} else {
-		queue.items = queue.items[1:]
-	}
-	return ret
-}
-
-func (queue *Queue[T]) Push(item T) {
-	queue.items = append(queue.items, item)
-}
-
-func (queue *Queue[T]) IsEmpty() bool {
-	return len(queue.items) == 0
-}
-
 const regexStr = `Valve ([A-Z]{2}) has flow rate=(\d+); tunnel(s)? lead(s)? to valve(s)? (([A-Z]{2},? ?)+)`
 
 type Valve struct {
@@ -159,7 +129,7 @@ func BuiltTimeMap(valvesByName map[string]Valve) (timeMap TimeMap, interestingVa
 	// add starting point
 	interestingValves["AA"] = struct{}{}
 	for valveName := range interestingValves {
-		valveToProcess := NewQueue[string]()
+		valveToProcess := common.NewQueue[string]()
 		valveToProcess.Push(valveName)
 		distanceMap := DistanceMap{valveName: 0}
 		visited := map[string]struct{}{}
