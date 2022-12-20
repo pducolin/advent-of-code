@@ -25,5 +25,5 @@ func TestPart1(t *testing.T) {
 }
 
 func TestPart2(t *testing.T) {
-	assert.Equal(t, "Hello World !", part2(data), "Failed testing part 2")
+	assert.Equal(t, "58", part2(data), "Failed testing part 2")
 }

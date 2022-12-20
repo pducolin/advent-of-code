@@ -4,9 +4,6 @@ import (
 	_ "embed"
 	"flag"
 	"fmt"
-	"strconv"
-
-	"github.com/pducolin/advent-of-code/2022/2022/day_18/lava"
 )
 
 //go:embed input.txt
@@ -27,20 +24,9 @@ func main() {
 }
 
 func part1(data string) string {
-	grid := lava.NewGrid(data)
-	res := 0
-	for cube := range grid.LavaCubes {
-		res += grid.CountFreeSides(cube)
-	}
-	return strconv.Itoa(res)
+	return data
 }
 
 func part2(data string) string {
-	grid := lava.NewGrid(data)
-	grid.FloodFill()
-	res := 0
-	for cube := range grid.LavaCubes {
-		res += grid.CountReachableSides(cube)
-	}
-	return strconv.Itoa(res)
+	return data
 }
