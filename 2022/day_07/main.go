@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/pducolin/advent-of-code/2022/2022/day_07/filesystem"
+	"github.com/pducolin/advent-of-code/2022/day_07/filesystem"
 )
 
 //go:embed input.txt

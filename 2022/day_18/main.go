@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/pducolin/advent-of-code/2022/2022/day_18/lava"
+	"github.com/pducolin/advent-of-code/2022/day_18/lava"
 )
 
 //go:embed input.txt

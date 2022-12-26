@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/pducolin/advent-of-code/2022/2022/common"
+	"github.com/pducolin/advent-of-code/2022/common"
 )
 
 type Grid struct {
