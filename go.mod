@@ -1,4 +1,4 @@
-module github.com/pducolin/advent-of-code/2022
+module github.com/pducolin/advent-of-code
 
 go 1.18
 
