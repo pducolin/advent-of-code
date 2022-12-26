@@ -257,7 +257,6 @@ func (c *Chamber) MoveRight() {
 	}
 
 	c.currentRock.topLeftPoint.x += 1
-	return
 }
 
 func (c *Chamber) MoveDown() error {
